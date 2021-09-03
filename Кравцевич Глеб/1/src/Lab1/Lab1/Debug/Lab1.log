@@ -1,0 +1,6 @@
+﻿  address.cpp
+  Lab1.cpp
+D:\Lessons\GitClones\Prog_lang\Кравцевич Глеб\1\src\Lab1\Lab1\Lab1.cpp(11,63): error C2664: "Address::Address(char *,char *,int)": невозможно преобразовать аргумент 1 из "const char [5]" в "char *"
+D:\Lessons\GitClones\Prog_lang\Кравцевич Глеб\1\src\Lab1\Lab1\Lab1.cpp(11,42): message : При преобразовании из строкового литерала теряется квалификатор (см. /Zc:strictStrings)
+D:\Lessons\GitClones\Prog_lang\Кравцевич Глеб\1\src\Lab1\Lab1\address.h(20,2): message : см. объявление "Address::Address"
+  Создание кода...
