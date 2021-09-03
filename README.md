@@ -5,8 +5,13 @@
 Выполняем работу
 Делаем пулл-реквест в мастер
 
+Подробнее о git: https://denis-creative.com/poshagovaya-instruktsiya-po-rabote-s-git-i-github-dlya-studentov/
+
 Лабораторные: https://drive.google.com/drive/folders/1wGmY2oETbxtDfszWJUA6ChBLOGT2wocw?usp=sharing
 
-Отчеты коммитаем в <Ваша_фамилия>/<Номер_лабораторной_работы>/rep
+Список подгруппы: https://docs.google.com/spreadsheets/d/1D2vc7K0R57yATcdN985CcWPGn_BSxOrbS8a8O7Xtfz0/edit?usp=sharing
 
-Код коммитаем в <Ваша_фамилия>/<Номер_лабораторной_работы>/src
+
+Отчеты коммитаем в reports/<Ваша_фамилия>/<Номер_лабораторной_работы>/rep
+
+Код коммитаем в reports/<Ваша_фамилия>/<Номер_лабораторной_работы>/src
