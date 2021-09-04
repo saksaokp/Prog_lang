@@ -73,6 +73,7 @@ def z2_4():
     print(new_str)
 
 
+
 MATRIX = [[1, 2, 3, 4, 5, 6, 7, 8],
           [8, 7, 6, 5, 4, 3, 2, 1],
           [2, 3, 4, 5, 6, 7, 8, 9],
@@ -132,9 +133,50 @@ def z3_7():
 
 def z3_8():
     matrix = deepcopy(MATRIX)
-    line = int(input('\nЗадание 3 №7\nСтрока: '))
-    column = int(input('Столбец: '))
+    line = int(input('\nЗадание 3 №7\nСтрока матрицы: '))
+    column = int(input('Столбец матрицы: '))
     print(matrix[column][line])
+
+
+
+def z4_1():
+    str = input('\nЗадание 4 №1\nПредложение: ').split()
+    for el in str:
+        if len(el) > 5:
+            print(el, end=' ')
+
+
+MY_STRING = 'Ф;И;О;Возраст;Категория;' \
+            '_Иванов;Иван;Иванович;23 года;Студент 3 курса;' \
+            '_Петров;Семен;Игоревич;22 года;Студент 2 курса' \
+            '_Петров;Семен;Семенович;21 года;Студент 1 курса'
+
+
+def z4_2():
+    str = MY_STRING.split('_')
+    for i in range(len(str)):
+        str[i] = str[i].split(';')
+    # print(str)
+    print('\nЗадание 4 №2\nФИО                  \tКатегория        \tВозраст')
+    for el in str[1:]:
+        print(f'{el[0]} {el[1]} {el[2]} \t{el[4]} \t{el[3]}')
+
+
+def z4_3():
+    str = MY_STRING.split('_')
+    for i in range(len(str)):
+        str[i] = str[i].split(';')
+    # print(str)
+    print('\nЗадание 4 №3\nФИО                  \tКатегория        \tВозраст')
+    for el in str[1:]:
+        if el[0] == 'Петров':
+            print(f'{el[0]} {el[1]} {el[2]} \t{el[4]} \t{el[3]}')
+
+
+def z4_4():
+    str = 'Это предложение здесь создано от безысходности.'
+    print('\nЗадание 4 №4\nПредложение:', str)
+    print(f'Количесто символов: {len(str)}\nКоличесто слов: {len(str.split())}')
 
 
 # z1_1()
@@ -152,3 +194,7 @@ def z3_8():
 # z3_6()
 # z3_7()
 # z3_8()
+# z4_1()
+# z4_2()
+# z4_3()
+# z4_4()
