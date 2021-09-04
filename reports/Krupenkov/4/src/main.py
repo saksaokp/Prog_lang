@@ -1,6 +1,7 @@
 from random import choice
 from copy import deepcopy
 
+
 def z1_1():
     a, b, c, k = map(int, input('\nЗадание 1 №1\na, b, c, k: ').split())
     if (a == 0) or (b == 0):
@@ -41,7 +42,6 @@ def z1_4():
     print('max: ', max)
 
 
-
 def z2_1():
     my_number = 2
     user_number = int(input('\nЗадание 2 №1\nuser_number: '))
@@ -73,7 +73,6 @@ def z2_4():
     print(new_str)
 
 
-
 MATRIX = [[1, 2, 3, 4, 5, 6, 7, 8],
           [8, 7, 6, 5, 4, 3, 2, 1],
           [2, 3, 4, 5, 6, 7, 8, 9],
@@ -82,6 +81,8 @@ MATRIX = [[1, 2, 3, 4, 5, 6, 7, 8],
           [3, 1, 5, 3, 2, 6, 5, 7],
           [1, 7, 5, 9, 7, 3, 1, 5],
           [2, 6, 3, 5, 1, 7, 3, 2]]
+
+
 # print('\nMATRIX:', *MATRIX, sep='\n')
 
 
@@ -138,7 +139,6 @@ def z3_8():
     print(matrix[column][line])
 
 
-
 def z4_1():
     str = input('\nЗадание 4 №1\nПредложение: ').split()
     for el in str:
@@ -150,6 +150,9 @@ MY_STRING = 'Ф;И;О;Возраст;Категория;' \
             '_Иванов;Иван;Иванович;23 года;Студент 3 курса;' \
             '_Петров;Семен;Игоревич;22 года;Студент 2 курса' \
             '_Петров;Семен;Семенович;21 года;Студент 1 курса'
+
+
+# print(f'\nMY_STRING:\n{MY_STRING}')
 
 
 def z4_2():
@@ -179,6 +182,48 @@ def z4_4():
     print(f'Количесто символов: {len(str)}\nКоличесто слов: {len(str.split())}')
 
 
+def z6_1():
+    matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    print('\nЗадание 6 №1\nМатрица:', *matrix, sep='\n')
+    list = []
+    for el in matrix:
+        for i in el:
+            list.append(i)
+    print('Конечный список:', list, sep='\n')
+
+
+def z6_2():
+    matrix = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    print('\nЗадание 6 №2\nНачальный список:', matrix, sep='\n')
+    matrix.pop(0)
+    matrix.pop(0)
+    matrix.append(10)
+    matrix.append(11)
+    print('Конечный список:', matrix, sep='\n')
+
+
+MY_LEN = [['БО-331101', ['Акулова Алена', 'Бабушкина Ксения']],
+          ['БОВ-421102', ['Дедушкин Даниил', 'Небесный Дмитрий']],
+          ['БО-331103', ['Апрошедший Александр']]]
+print('\nMY_LEN:', *MY_LEN, sep='\n')
+
+
+def z6_3():
+    print('\nЗадание 6 №3')
+    for el in MY_LEN:
+        print(el[0])
+        for i in el[1]:
+            print(f'\t{i}')
+
+
+def z6_4():
+    print('\nЗадание 6 №4')
+    for el in MY_LEN:
+        for i in el[1]:
+            if i[0] == 'А' or i[0] == 'A':  # Русская и английская
+                print(f'{i} ({el[0]})')
+
+
 # z1_1()
 # z1_2()
 # z1_3()
@@ -198,3 +243,7 @@ def z4_4():
 # z4_2()
 # z4_3()
 # z4_4()
+# z6_1()
+# z6_2()
+# z6_3()
+# z6_4()
