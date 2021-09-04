@@ -1,3 +1,7 @@
+from random import choice
+import random
+
+
 def z1_1():
     a, b, c, k = map(int, input('\nЗадание 1 №1\na, b, c, k: ').split())
     if (a == 0) or (b == 0):
@@ -38,6 +42,7 @@ def z1_4():
     print('max: ', max)
 
 
+
 def z2_1():
     my_number = 2
     user_number = int(input('\nЗадание 2 №1\nuser_number: '))
@@ -46,16 +51,34 @@ def z2_1():
 
 
 def z2_2():
-    list = input('\nЗадание 2 №1\ninput: ').split()
+    list = input('\nЗадание 2 №2\ninput: ').split()
     print(list)
     for el in list:
         if 5 <= len(el) <= 10:
             print(el)
 
 
+def z2_3():
+    print('\nЗадание 2 №3')
+    alphabet = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+    for i in range(5):
+        print(choice(alphabet), end='')
+
+
+def z2_4():
+    str = input('\nЗадание 2 №3\nВедите строку: ')
+    new_str = ''
+    for symbol in str:
+        if symbol.isdigit():
+            new_str += symbol
+    print(new_str)
+
+
 # z1_1()
 # z1_2()
 # z1_3()
 # z1_4()
-
-z2_2()
+# z2_1()
+# z2_2()
+# z2_3()
+# z2_4()
