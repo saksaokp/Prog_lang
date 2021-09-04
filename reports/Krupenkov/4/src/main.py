@@ -38,7 +38,24 @@ def z1_4():
     print('max: ', max)
 
 
-z1_1()
-z1_2()
-z1_3()
-z1_4()
+def z2_1():
+    my_number = 2
+    user_number = int(input('\nЗадание 2 №1\nuser_number: '))
+    while user_number >= my_number:
+        user_number = int(input('user_number: '))
+
+
+def z2_2():
+    list = input('\nЗадание 2 №1\ninput: ').split()
+    print(list)
+    for el in list:
+        if 5 <= len(el) <= 10:
+            print(el)
+
+
+# z1_1()
+# z1_2()
+# z1_3()
+# z1_4()
+
+z2_2()
