@@ -1,249 +1,275 @@
 from random import choice
 from copy import deepcopy
+from pprint import pprint
+from typing import List, Union
 
 
-def z1_1():
-    a, b, c, k = map(int, input('\nЗадание 1 №1\na, b, c, k: ').split())
-    if (a == 0) or (b == 0):
-        print('Error (~/0)')
-    else:
+def task1_1() -> None:
+    print('\nЗадание 1.1 - решение формулы по введенным числам')
+    a, b, c, k = map(float, input('a, b, c, k (через пробел): ').split())
+    try:
         result = abs((a ** 2 / b ** 2 + c ** 2 * a ** 2) / (a + b + c * (k - a / b ** 3)) + c + (k / b - k / a) * c)
         print(result)
+    except ZeroDivisionError:
+        print('ZeroDivisionError')
 
 
-def z1_2():
-    list = [2, 5, 'sus', 16, '4', 3, 1]
-    print('\nЗадание 1 №2\nlist: ', list)
-    for el in list:
-        try:
-            if el % 2 == 0:
-                print(el, ' ')
-        except TypeError:
-            continue
+def task1_2() -> None:
+    print('\nЗадание 1.2 - вывод четных элементов')
+    _list = [2, 5, 'sus', 16, '4', 3, 1]
+    print(f'list: {_list}')
+    for i, el in enumerate(_list):
+        if i % 2:
+            print(el)
 
 
-def z1_3():
-    list = [2, 40, 23, 12, 9, 10, 6, 100]
-    print('\nЗадание 1 №3\nlist: ', list)
-    sum = 0
-    for el in list:
+def task1_3() -> None:
+    print('\nЗадание 1.3 - сложение чисел списка больше 10')
+    _list = [2, 40, 23, 12, 9, 10, 6, 100]
+    print('list: ', _list)
+    _sum = 0
+    for el in _list:
         if el > 10:
-            sum += el
-    print('sum(>10): ', sum)
+            _sum += el
+    print('sum(>10): ', _sum)
 
 
-def z1_4():
-    list = [2, 40, 23, 12, 9, 10, 6, 100]
-    print('\nЗадание 1 №4\nlist: ', list)
-    max = list[0]
-    for el in list[1:]:
-        if el > max:
-            max = el
-    print('max: ', max)
+def task1_4() -> None:
+    print('\nЗадание 1.4 - поиск максимального элемента в списке')
+    _list = [2, 40, 23, 12, 9, 10, 6, 100]
+    print('list: ', _list)
+    _max = _list[0]
+    for el in _list[1:]:
+        if el > _max:
+            _max = el
+    print('max: ', _max)
 
 
-def z2_1():
-    my_number = 2
-    user_number = int(input('\nЗадание 2 №1\nuser_number: '))
+def task2_1() -> None:
+    print('\nЗадание 2.1 - запрос числа, пока оно не будет меньше  my_number (5)')
+    my_number = 5
+    user_number = int(input('user_number: '))
     while user_number >= my_number:
         user_number = int(input('user_number: '))
 
 
-def z2_2():
-    list = input('\nЗадание 2 №2\ninput: ').split()
-    print(list)
-    for el in list:
+def task2_2() -> None:
+    print('\nЗадание 2.2 - вывод строк списка размером от 5 до 10')
+    _list = input('Список строк (через пробел): ').split()
+    print(_list)
+    for el in _list:
         if 5 <= len(el) <= 10:
             print(el)
 
 
-def z2_3():
-    print('\nЗадание 2 №3')
+def task2_3() -> None:
+    print('\nЗадание 2.3 - вывод случайной строки из 5 заглавных букв русского алфавита')
     alphabet = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
     for i in range(5):
         print(choice(alphabet), end='')
+    print()
 
 
-def z2_4():
-    str = input('\nЗадание 2 №4\nВедите строку: ')
+def task2_4() -> None:
+    print('\nЗадание 2.4 - из строки сформировать новую из цифр')
+    _str = input('Ведите строку: ')
     new_str = ''
-    for symbol in str:
+    for symbol in _str:
         if symbol.isdigit():
             new_str += symbol
-    print(new_str)
+    print(f'Новая строка: {new_str}')
 
 
-MATRIX = [[1, 2, 3, 4, 5, 6, 7, 8],
-          [8, 7, 6, 5, 4, 3, 2, 1],
-          [2, 3, 4, 5, 6, 7, 8, 9],
-          [9, 8, 7, 6, 5, 4, 3, 2],
-          [1, 3, 5, 7, 9, 7, 5, 3],
-          [3, 1, 5, 3, 2, 6, 5, 7],
-          [1, 7, 5, 9, 7, 3, 1, 5],
-          [2, 6, 3, 5, 1, 7, 3, 2]]
+MATRIX: List[List[int]] = [
+    [1, 2, 3, 4, 5, 6, 7, 8],
+    [8, 7, 6, 5, 4, 3, 2, 1],
+    [2, 3, 4, 5, 6, 7, 8, 9],
+    [9, 8, 7, 6, 5, 4, 3, 2],
+    [1, 3, 5, 7, 9, 7, 5, 3],
+    [3, 1, 5, 3, 2, 6, 5, 7],
+    [1, 7, 5, 9, 7, 3, 1, 5],
+    [2, 6, 3, 5, 1, 7, 3, 2]
+]
 
 
-# print('\nMATRIX:', *MATRIX, sep='\n')
-
-
-def z3_1():
+def task3_1() -> None:
+    print('\nЗадание 3.1 - возведение всех элементов в квадрат')
     matrix = deepcopy(MATRIX)
     for i in matrix:
         for j in range(len(i)):
             i[j] *= i[j]
-    print('\nЗадание 3 №1', *matrix, sep='\n')
+    print(*matrix, sep='\n')
 
 
-def z3_2():
+def task3_2() -> None:
+    print('\nЗадание 3.2 - сложение по строкам')
     line = deepcopy(MATRIX[0])
     for i in MATRIX[1:]:
         for j in range(len(i)):
             line[j] += i[j]
-    print('\nЗадание 3 №2', line, sep='\n')
+    print(line)
 
 
-def z3_4():
+def task3_4() -> None:
+    print('\nЗадание 3.4 - умножение по строкам')
     line = deepcopy(MATRIX[0])
     for i in MATRIX[1:]:
         for j in range(len(i)):
             line[j] *= i[j]
-    print('\nЗадание 3 №4', line, sep='\n')
+    print(line)
 
 
-def z3_5():
+def task3_5() -> None:
+    print('\nЗадание 3.5 - замена всех четных элементов на 0')
     matrix = deepcopy(MATRIX)
     for i in matrix:
         for j in range(len(i)):
             if i[j] % 2 == 0:
                 i[j] *= 0
-    print('\nЗадание 3 №5', *matrix, sep='\n')
-
-
-def z3_6():
-    matrix = deepcopy(MATRIX)
-    delele_line = int(input('\nЗадание 3 №6\nВведите число: '))
-    matrix.pop(delele_line)
     print(*matrix, sep='\n')
 
 
-def z3_7():
+def task3_6() -> None:
+    print('\nЗадание 3.6 - удаление стоки по введенному номеру')
+    matrix = deepcopy(MATRIX)
+    del_line = int(input('Введите номер (с нуля): '))
+    matrix.pop(del_line)
+    print(*matrix, sep='\n')
+
+
+def task3_7() -> None:
+    print('\nЗадание 3.7 - замена первой и последней строки')
     matrix = deepcopy(MATRIX)
     matrix[0], matrix[-1] = matrix[-1], matrix[0]
-    print('\nЗадание 3 №7', *matrix, sep='\n')
+    print(*matrix, sep='\n')
 
 
-def z3_8():
+def task3_8() -> None:
+    print('\nЗадание 3.8 - поиск по координатам')
     matrix = deepcopy(MATRIX)
-    line = int(input('\nЗадание 3 №7\nСтрока матрицы: '))
+    line = int(input('Строка матрицы: '))
     column = int(input('Столбец матрицы: '))
     print(matrix[column][line])
 
 
-def z4_1():
-    str = input('\nЗадание 4 №1\nПредложение: ').split()
-    for el in str:
+def task4_1() -> None:
+    print('\nЗадание 4.1 - Оставить в предложении только слова с более 5 буквами')
+    _str = input('Введите предложение: ').split()
+    for el in _str:
         if len(el) > 5:
             print(el, end=' ')
 
 
-MY_STRING = 'Ф;И;О;Возраст;Категория;' \
-            '_Иванов;Иван;Иванович;23 года;Студент 3 курса;' \
-            '_Петров;Семен;Игоревич;22 года;Студент 2 курса' \
-            '_Петров;Семен;Семенович;21 года;Студент 1 курса'
+MY_STRING: str = 'Ф;И;О;Возраст;Категория;' \
+                 '_Иванов;Иван;Иванович;23 года;Студент 3 курса;' \
+                 '_Петров;Семен;Игоревич;22 года;Студент 2 курса;' \
+                 '_Петров;Семен;Семенович;21 года;Студент 1 курса'
+STR_LIST: List[str] = MY_STRING.split(';_')
+STR_MATRIX: List[List[str]] = []
+for el in STR_LIST:
+    STR_MATRIX.append(el.split(';'))
 
 
-# print(f'\nMY_STRING:\n{MY_STRING}')
-
-
-def z4_2():
-    str = MY_STRING.split('_')
-    for i in range(len(str)):
-        str[i] = str[i].split(';')
-    # print(str)
-    print('\nЗадание 4 №2\nФИО                  \tКатегория        \tВозраст')
-    for el in str[1:]:
+def task4_2() -> None:
+    print('\nЗадание 4.2 - красиво вывести MY_STRING')
+    print('ФИО                  \tКатегория        \tВозраст')
+    for el in STR_MATRIX[1:]:
         print(f'{el[0]} {el[1]} {el[2]} \t{el[4]} \t{el[3]}')
 
 
-def z4_3():
-    str = MY_STRING.split('_')
-    for i in range(len(str)):
-        str[i] = str[i].split(';')
-    # print(str)
-    print('\nЗадание 4 №3\nФИО                  \tКатегория        \tВозраст')
-    for el in str[1:]:
+def task4_3() -> None:
+    print('\nЗадание 4.3 - красиво вывести Петровых')
+    print('ФИО                  \tКатегория        \tВозраст')
+    for el in STR_MATRIX[1:]:
         if el[0] == 'Петров':
             print(f'{el[0]} {el[1]} {el[2]} \t{el[4]} \t{el[3]}')
 
 
-def z4_4():
-    str = 'Это предложение здесь создано от безысходности.'
-    print('\nЗадание 4 №4\nПредложение:', str)
-    print(f'Количесто символов: {len(str)}\nКоличесто слов: {len(str.split())}')
+def task4_4() -> None:
+    print('\nЗадание 4.4 - вывести количество символов и слов')
+    line = 'Это предложение здесь создано от безысходности.'
+    print('Предложение:', line)
+    print(f'Количесто символов: {len(line)}\nКоличесто слов: {len(line.split())}')
 
 
-def z6_1():
+def task6_1() -> None:
+    print('\nЗадание 6.1 - представить матрицу N*N в виде списка')
     matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    print('\nЗадание 6 №1\nМатрица:', *matrix, sep='\n')
-    list = []
+    print('Матрица:', *matrix, sep='\n')
+    matrix_list = []
     for el in matrix:
         for i in el:
-            list.append(i)
-    print('Конечный список:', list, sep='\n')
+            matrix_list.append(i)
+    print('Конечный список:', matrix_list, sep='\n')
 
 
-def z6_2():
+def task6_2() -> None:
+    print('\nЗадание 6.2 - пусть дан список из 10 элементов, удавить 2 первых элемента и добавить 2 новых')
     matrix = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    print('\nЗадание 6 №2\nНачальный список:', matrix, sep='\n')
+    print(f'Начальный список:\n{matrix}')
     matrix.pop(0)
     matrix.pop(0)
     matrix.append(10)
     matrix.append(11)
-    print('Конечный список:', matrix, sep='\n')
+    print(f'Конечный список:\n{matrix}')
 
 
-MY_LEN = [['БО-331101', ['Акулова Алена', 'Бабушкина Ксения']],
-          ['БОВ-421102', ['Дедушкин Даниил', 'Небесный Дмитрий']],
-          ['БО-331103', ['Апрошедший Александр']]]
-print('\nMY_LEN:', *MY_LEN, sep='\n')
+MY_LEN: List[List[Union[str, List[str]]]] = [
+    ['БО-331101', ['Акулова Алена', 'Бабушкина Ксения']],
+    ['БОВ-421102', ['Дедушкин Даниил', 'Небесный Дмитрий']],
+    ['БО-331103', ['Апрошедший Александр']]
+]
 
 
-def z6_3():
-    print('\nЗадание 6 №3')
+def task6_3() -> None:
+    print('\nЗадание 6.3 - красиво вывести MY_LEN')
     for el in MY_LEN:
         print(el[0])
         for i in el[1]:
             print(f'\t{i}')
 
 
-def z6_4():
-    print('\nЗадание 6 №4')
+def task6_4() -> None:
+    print('\nЗадание 6.4 - вывести студентов с фамилией на А')
     for el in MY_LEN:
         for i in el[1]:
-            if i[0] == 'А' or i[0] == 'A':  # Русская и английская
+            if i.startswith('А'):
                 print(f'{i} ({el[0]})')
 
 
-# z1_1()
-# z1_2()
-# z1_3()
-# z1_4()
-# z2_1()
-# z2_2()
-# z2_3()
-# z2_4()
-# z3_1()
-# z3_2()
-# z3_4()
-# z3_5()
-# z3_6()
-# z3_7()
-# z3_8()
-# z4_1()
-# z4_2()
-# z4_3()
-# z4_4()
-# z6_1()
-# z6_2()
-# z6_3()
-# z6_4()
+def main() -> None:
+    print('\nЗадание 1')
+    task1_1()
+    task1_2()
+    task1_3()
+    task1_4()
+    print('\nЗадание  2 «Строки и списки»')
+    task2_1()
+    task2_2()
+    task2_3()
+    task2_4()
+    print('\nЗадание 3 «Матрицы»\nНачальная матрица:')
+    pprint(MATRIX)
+    task3_1()
+    task3_2()
+    task3_4()
+    task3_5()
+    task3_6()
+    task3_7()
+    task3_8()
+    print('\nЗадание 4 «Строки»\nMY_STRING:')
+    print(MY_STRING)
+    task4_1()
+    task4_2()
+    task4_3()
+    task4_4()
+    print('\nЗадание 6 «Списки»\nMY_LEN:')
+    pprint(MY_LEN)
+    task6_1()
+    task6_2()
+    task6_3()
+    task6_4()
+
+
+if __name__ == "__main__":
+    main()
