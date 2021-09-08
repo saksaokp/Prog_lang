@@ -1,4 +1,5 @@
 import math
+import os
 import random
 
 matrix = [
@@ -16,7 +17,8 @@ matrix = [
 def task1():
     a, b, c, d = int(input('Enter a: ')), int(input('Enter b: ')), int(input('Enter c: ')), int(input('Enter d: '))
     print('Result: ',
-          math.fabs(1 - (a * b ** c) - a * (b ** 2 - c ** 2) + (b - c + a) * (12 + b) / (c - a)) if c - a != 0 else 0)
+          math.fabs(1 - (a * b ** c) - a * (b ** 2 - c ** 2) + (b - c + a) * (12 + b) / (
+                      c - a)) if c - a != 0 else 'Division by zero')
 
 
 def task2():
@@ -102,8 +104,8 @@ def task12():
 
 
 def task13():
-    global matrix
-    matrix[0], matrix[-1] = matrix[-1], matrix[0]
+    for line in matrix:
+        line[0], line[-1] = line[-1], line[0]
     print(*matrix, sep='\n')
 
 
@@ -117,11 +119,11 @@ def task14():
 
 def task15():
     text = input('Enter text: ')
-    for chr in ',.:-;':
+    for chr in ',.:-;\\/':
         text.replace(chr, '')
     output = ''
     for s in text.split(' '):
-        if len(s) >= 5 and len(s) <= 10:
+        if 5 <= len(s) <= 10:
             output += s + ' '
     print(output.strip())
 
@@ -129,13 +131,13 @@ def task15():
 def task16():
     students = input('Enter info about students: ')
     str = '{0:10}{1:15}{2:15}{3:30}'
-    splited = students.split(';')
+    split = students.split(';')
 
-    lastname = splited[::5]
-    firstname = splited[1::5]
-    fath = splited[2::5]
-    age = splited[3::5]
-    category = splited[4::5]
+    lastname = split[::5]
+    firstname = split[1::5]
+    fath = split[2::5]
+    age = split[3::5]
+    category = split[4::5]
     category[0] = 'О Студенте'
     age[0] = ''
 
@@ -145,12 +147,12 @@ def task16():
 
 def task17():
     students = input('Enter info about students: ')
-    splited = students.split(';')
+    split = students.split(';')
 
     output = '{0:30}{1:10}{2:15}'
-    fullname = splited[::3]
-    age = splited[1::3]
-    category = splited[2::3]
+    fullname = split[::3]
+    age = split[1::3]
+    category = split[2::3]
     print(output.format(fullname[0], age[0], category[0]))
 
     for i in range(1, len(age)):
@@ -181,19 +183,23 @@ def task20():
     print('Result: ', l)
 
 
-def task21(l):
-    # ['Name', ['', '', '']]
+def task21():
+    l = [['Group1', ['Member1', 'Member2', 'Member3']], ['Group2', ['Member1', 'Member2', 'Member3']],
+         ['Group3', ['Member1', 'Member2', 'Member3']]]
     for group in l:
         print(group[0])
         print(*group[1], sep='\n')
 
 
-def task22(l):
+def task22():
+    l = [['Group1', ['Member1', 'Member2', 'Member3']], ['Group2', ['Member1', 'Member2', 'Member3']],
+         ['Group3', ['Member1', 'Member2', 'Member3']]]
+
     for group in l:
         print(group[0])
         for student in group[1]:
-            splited = student.split(' ')
-            if splited[0].startswith('П') and splited[-1].startswith('А'):
+            split = student.split(' ')
+            if split[0].startswith('П') and split[-1].startswith('А'):
                 print(student)
 
 
@@ -225,11 +231,15 @@ def menu():
 
     print('0-Выход')
     for num in range(1, 23):
-        print(f'{num}. Задание {num}')
+        print(f'{num} - Задание {num}')
     choice = int(input('Ваш выбор: '))
 
     if choice > 0:
         options[choice]()
+        answer = input('Вы хотите продолжить?\n(Д)а\t(Н)ет\n')
+        if answer == 'Д':
+            os.system('cls')
+            menu()
 
 
 if __name__ == '__main__':
