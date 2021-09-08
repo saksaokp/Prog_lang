@@ -14,8 +14,7 @@ matrix = [
 
 
 def task1():
-    a, b, c, d, f = int(input('Enter a: ')), int(input('Enter b: ')), int(input('Enter c: ')), int(input('Enter d: ')), \
-                    int(input('Enter f: '))
+    a, b, c, d = int(input('Enter a: ')), int(input('Enter b: ')), int(input('Enter c: ')), int(input('Enter d: '))
     print('Result: ',
           math.fabs(1 - (a * b ** c) - a * (b ** 2 - c ** 2) + (b - c + a) * (12 + b) / (c - a)) if c - a != 0 else 0)
 
@@ -33,6 +32,7 @@ def task3():
     for num in [x for x in l if x < 10]:
         output *= num
 
+    print('Result: ', output)
     return output
 
 
