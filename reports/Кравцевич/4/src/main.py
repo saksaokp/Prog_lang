@@ -41,14 +41,16 @@ def task3():
 def task4():
     size = int(input('Enter list size: '))
     l = [int(input('Enter next element: ')) for _ in range(size)]
-    return sum(l) / len(l)
+    average = sum(l) / len(l)
+    print('Average: ', average)
+    return average
 
 
 def task5():
-    my_number = int(input('First number: '))
+    my_number = 100
     user_number = int(input('Second number: '))
     while user_number == my_number:
-        user_number = input()
+        user_number = int(input('Try again: '))
 
 
 def task6():
@@ -78,7 +80,7 @@ def task9():
         for col_index, element in enumerate(line):
             if element < 5:
                 matrix[row_index][col_index] **= 2
-
+    print(*matrix, sep='\n')
     return matrix
 
 
@@ -118,7 +120,7 @@ def task14():
 
 
 def task15():
-    text = input('Enter text: ')
+    text = 'this is a new text large words aboba'
     for chr in ',.:-;\\/':
         text.replace(chr, '')
     output = ''
@@ -129,7 +131,8 @@ def task15():
 
 
 def task16():
-    students = input('Enter info about students: ')
+    students = "Ф;И;О;Возраст;Категория;Иванов;Иван;Иванович;23 года;" \
+               "Студент 3 курса;Петров;Семен;Игоревич;22 года;Студент 2 курса"
     str = '{0:10}{1:15}{2:15}{3:30}'
     split = students.split(';')
 
@@ -192,7 +195,7 @@ def task21():
 
 
 def task22():
-    l = [['Group1', ['Member1', 'Member2', 'Member3']], ['Group2', ['Member1', 'Member2', 'Member3']],
+    l = [['Group1', ['ПMember1 АБОБА', 'ПMember2 АБОБА', 'Member3']], ['Group2', ['Member1', 'ПMember2 АБОБА', 'Member3']],
          ['Group3', ['Member1', 'Member2', 'Member3']]]
 
     for group in l:
