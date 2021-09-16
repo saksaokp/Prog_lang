@@ -1,8 +1,11 @@
 from pprint import pprint
-from typing import List, Optional
+from typing import List, Tuple, Union
+
+Header = List[str]
+Students = List[List[Union[str, int]]]
 
 
-def printing(text=None, header=None, students=None):
+def printing(text: str, header, students) -> None:
     if text:
         print(text)
     if header:
@@ -13,28 +16,30 @@ def printing(text=None, header=None, students=None):
         pprint(students)
 
 
-def load(filename):
-    with open('files/' + filename, 'r', encoding='utf-8') as file:
-        students: List[List[Optional[str, int]]] = []
+def load(filename: str) -> Tuple[Header, Students]:
+    filename = 'files/' + filename
+    with open(filename, 'r', encoding='utf-8') as file:
+        students: Students = []
         for line in file.read().split('\n'):
             students.append(line.split(';'))
-    header = students.pop(0)
+
+    header: Header = students.pop(0)
     for student in students:
         student[0] = int(student[0])
         student[2] = int(student[2])
     students.sort(key=lambda x: x[1])
-    printing(f'Loaded from {filename}:', header, students)
+    printing(f'Загружено из "{filename}":', header, students)
     return header, students
 
 
-def decrease(students):
+def decrease(students) -> None:
     for student in students:
         student[2] -= 1
-    printing('Decreased:', None, students)
+    printing('\nУменьшено на 1:', None, students)
 
 
-def save(filename, header, students):
-    # filename = 'new_students.csv'
+def save(filename, header, students) -> None:
+    filename = 'files/' + filename
     to_save: str = ''
     row_sep = ''
     for student in [header] + students:
@@ -44,14 +49,14 @@ def save(filename, header, students):
         for i in student:
             to_save += val_sep + str(i)
             val_sep = ';'
-    with open('files/' + filename, 'w', encoding='utf-8') as file:
+    with open(filename, 'w', encoding='utf-8') as file:
         file.write(to_save)
-    printing(f'Saved to {filename}:', header, students)
+    printing(f'Сохранено в "{filename}":', header, students)
 
 
-def menu(header, students):
+def menu(header, students) -> None:
     while True:
-        print('\nMenu:')
+        print('\nМеню:')
         print('1: Уменьшить возраст всех студентов на 1')
         print('2: Сохранить')
         print('3: Загрузить')
@@ -62,9 +67,9 @@ def menu(header, students):
         elif inp == '2':
             save(input('Введите название файла для сохранения: '), header, students)
         elif inp == '3':
-            load(input('Введите название файла для загрузки: '))
+            header, students = load(input('Введите название файла для загрузки: '))
         elif inp == '0':
-            break
+            return
 
 
 def main():
