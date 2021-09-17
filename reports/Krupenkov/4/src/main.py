@@ -103,10 +103,9 @@ def task3_1() -> None:
 
 def task3_2() -> None:
     print('\nЗадание 3.2 - сложение по строкам')
-    line = deepcopy(MATRIX[0])
-    for i in MATRIX[1:]:
-        for j in range(len(i)):
-            line[j] += i[j]
+    line: List[int] = []
+    for i in range(len(MATRIX)):
+        line.append(sum(MATRIX[i]))
     print(line)
 
 
@@ -147,9 +146,9 @@ def task3_7() -> None:
 def task3_8() -> None:
     print('\nЗадание 3.8 - поиск по координатам')
     matrix = deepcopy(MATRIX)
-    line = int(input('Строка матрицы: '))
-    column = int(input('Столбец матрицы: '))
-    print(matrix[column][line])
+    line = int(input('Строка матрицы (с нуля): '))
+    column = int(input('Столбец матрицы (с нуля): '))
+    print(matrix[line][column])
 
 
 def task4_1() -> None:
@@ -201,6 +200,7 @@ def task6_1() -> None:
         for i in el:
             matrix_list.append(i)
     print('Конечный список:', matrix_list, sep='\n')
+    print('Сумма всех элементов:', sum(matrix_list))
 
 
 def task6_2() -> None:
@@ -238,37 +238,66 @@ def task6_4() -> None:
 
 
 def main() -> None:
-    print('\nЗадание 1')
-    task1_1()
-    task1_2()
-    task1_3()
-    task1_4()
-    print('\nЗадание  2 «Строки и списки»')
-    task2_1()
-    task2_2()
-    task2_3()
-    task2_4()
-    print('\nЗадание 3 «Матрицы»\nНачальная матрица:')
-    pprint(MATRIX)
-    task3_1()
-    task3_2()
-    task3_4()
-    task3_5()
-    task3_6()
-    task3_7()
-    task3_8()
-    print('\nЗадание 4 «Строки»\nMY_STRING:')
-    print(MY_STRING)
-    task4_1()
-    task4_2()
-    task4_3()
-    task4_4()
-    print('\nЗадание 6 «Списки»\nMY_LEN:')
-    pprint(MY_LEN)
-    task6_1()
-    task6_2()
-    task6_3()
-    task6_4()
+    functions = [
+        [task1_1, task1_2, task1_3, task1_4],
+        [task2_1, task2_2, task2_3, task2_4],
+        [task3_1, task3_2, task3_4, task3_5, task3_6, task3_7, task3_8],
+        [task4_1, task4_2, task4_3, task4_4],
+        [],
+        [task6_1, task6_2, task6_3, task6_4],
+    ]
+
+    while True:
+        print("""
+ij  Номера функций:
+    Задание 1
+11. Задание 1-1
+12. Задание 1-2
+13. Задание 1-3
+14. Задание 1-4
+    Задание 2 «Строки и списки»
+21. Задание 2-1
+22. Задание 2-2
+23. Задание 2-3
+24. Задание 2-4
+    Задание 3 «Матрицы»
+31. Задание 3-1
+32. Задание 3-2
+33. Задание 3-3
+34. Задание 3-4
+35. Задание 3-5
+36. Задание 3-6
+37. Задание 3-7
+38. Задание 3-8
+    Задание 4 «Строки»
+41. Задание 4-1
+42. Задание 4-2
+43. Задание 4-3
+44. Задание 4-4
+    Задание 6 «Списки»
+61. Задание 6-1
+62. Задание 6-2
+63. Задание 6-3
+64. Задание 6-4
+00. Выход из программы        
+        """)
+        ans = input('Введите двузначный номер функции: ')
+        if len(ans) == 2:
+            i, j = map(int, ans)
+
+            if i == 3:
+                print('Начальная матрица:')
+                pprint(MATRIX)
+            elif i == 4:
+                print('MY_STRING:')
+                print(MY_STRING)
+            elif i == 6 and j > 2:
+                print('MY_LEN:')
+                pprint(MY_LEN)
+
+            functions[i - 1][j - 1]()
+        elif ans == '0':
+            break
 
 
 if __name__ == "__main__":
