@@ -6,6 +6,20 @@ class Bus:
     __speed: int
     __passengers: int
 
+    def __init__(self, name: str = 'nameless', speed: int = 0, passengers: int = 0):
+        Bus.counter += 1
+        self.__name = name
+        self.__speed = speed
+        self.__passengers = passengers
+        print(f'Created {self}')
+
+    def __str__(self) -> str:
+        return f'Bus (name: {self.__name}, speed: {self.__speed}, ' \
+               f'passengers: {self.passengers}; counter: {Bus.counter})'
+
+    def __del__(self):
+        print(f'Deleted {self}')
+
     @property
     def name(self) -> str:
         return self.__name
@@ -30,29 +44,9 @@ class Bus:
     def passengers(self, passengers: int) -> None:
         self.__passengers = passengers
 
-    def __init__(self, name: str = 'nameless', speed: int = 0, passengers: int = 0) -> None:
-        Bus.counter += 1
-        self.__name = name
-        self.__speed = speed
-        self.__passengers = passengers
-
-    def __str__(self) -> str:
-        return f'Bus (name: {self.__name}, speed: {self.__speed}, ' \
-               f'passengers: {self.passengers}; counter: {Bus.counter})'
-
-    def print(self) -> None:
-        print(self)
-
-
-print('Задание 1')
-maz = Bus('maz', 120)
-maz.print()
-mercedes = Bus('mercedes', 150)
-mercedes.print()
-
 
 # Вариант 9 Задание 2-13:
-# Актер-Сотрудник-Режиссер
+# Сотрудник->Актер->Режиссер
 class Employee:
     _name: str
     _age: int
@@ -62,9 +56,13 @@ class Employee:
         self._name = name
         self._age = age
         self._salary = salary
+        # print(f'Created employee: {self._name}, {self._age}, {self._salary}')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Employee: {self._name}, {self._age}, {self._salary}'
+
+    def __del__(self):
+        print(f'Deleted {self}')
 
     @property
     def name(self):
@@ -94,12 +92,14 @@ class Employee:
 class Actor(Employee):
     _role: str
 
-    def __init__(self, name, age, salary, role):
+    def __init__(self, name='nameless', age=0, salary=0, role='empty'):
         super().__init__(name, age, salary)
         self._role = role
+        # prev: str = super().__str__()
+        # print(f'Created actor{prev[prev.find(":"):]}, {self._role}')
 
     def __str__(self):
-        prev = super().__str__()
+        prev: str = super().__str__()
         return 'Actor' + prev[prev.find(':'):] + f', {self._role}'
 
     @property
@@ -114,12 +114,14 @@ class Actor(Employee):
 class Director(Actor):
     _film: str
 
-    def __init__(self, name, age, salary, role, film):
+    def __init__(self, name='nameless', age=0, salary=0, role='empty', film='secret'):
         super().__init__(name, age, salary, role)
         self._film = film
+        # prev = super().__str__()
+        # print(f'Created director{prev[prev.find(":"):]}, {self._film}')
 
     def __str__(self):
-        prev = super().__str__()
+        prev: str = super().__str__()
         return 'Director' + prev[prev.find(':'):] + f', {self._film}'
 
     @property
@@ -131,18 +133,32 @@ class Director(Actor):
         self._film = film
 
 
-print('Задание 2')
-employee = Employee('Random woman', 60, 600)
-actor = Actor('Kirill', 18, 1500, 'main')
-director = Director('Michel', 19, 3600, 'director', 'The last choice')
-people = [employee, actor, director]
-print(*people, sep='\n', end='\n\n')
+def main():
+    print('Задание 1')
+    maz = Bus('maz', 120, 50)
+    mercedes = Bus('mercedes', 150, 35)
+    maz.passengers = 55
+    mercedes.speed = 140
+    print(maz)
+    print(mercedes)
 
-employee.name = 'Lida'
-actor.role = 'second'
-actor.salary = 1200
-director.film = 'The last chance'
-director.role = 'BigBoss'
-director.salary += 1000
+    print('\nЗадание 2')
+    employee = Employee('Random woman', 60, 600)
+    actor = Actor('Kirill', 18, 1500, 'main')
+    director = Director('Michel', 19, 3600, 'director', 'The last choice')
+    people = [employee, actor, director]
+    # print('Создание экземпляров класса:')
+    print(*people, sep='\n', end='\n\n')
 
-print(*people, sep='\n')
+    employee.name = 'Lida'
+    actor.role = 'second'
+    actor.salary = 1200
+    director.film = 'The last chance'
+    director.role = 'BigBoss'
+    director.salary += 1000
+
+    print(*people, sep='\n', end='\n\n')
+
+
+if __name__ == '__main__':
+    main()
