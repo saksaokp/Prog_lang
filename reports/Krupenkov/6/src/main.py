@@ -46,7 +46,7 @@ class Bus:
 
 
 # Вариант 9 Задание 2-13:
-# Сотрудник->Актер->Режиссер
+# Актер<-Сотрудник->Режиссер
 class Employee:
     _name: str
     _age: int
@@ -56,7 +56,7 @@ class Employee:
         self._name = name
         self._age = age
         self._salary = salary
-        # print(f'Created employee: {self._name}, {self._age}, {self._salary}')
+        print(f'Created employee: {self._name}, {self._age}, {self._salary}')
 
     def __str__(self) -> str:
         return f'Employee: {self._name}, {self._age}, {self._salary}'
@@ -95,8 +95,8 @@ class Actor(Employee):
     def __init__(self, name='nameless', age=0, salary=0, role='empty'):
         super().__init__(name, age, salary)
         self._role = role
-        # prev: str = super().__str__()
-        # print(f'Created actor{prev[prev.find(":"):]}, {self._role}')
+        prev: str = super().__str__()
+        print(f'Created actor{prev[prev.find(":"):]}, {self._role}')
 
     def __str__(self):
         prev: str = super().__str__()
@@ -111,14 +111,14 @@ class Actor(Employee):
         self._role = role
 
 
-class Director(Actor):
+class Director(Employee):
     _film: str
 
-    def __init__(self, name='nameless', age=0, salary=0, role='empty', film='secret'):
-        super().__init__(name, age, salary, role)
+    def __init__(self, name='nameless', age=0, salary=0, film='secret'):
+        super().__init__(name, age, salary)
         self._film = film
-        # prev = super().__str__()
-        # print(f'Created director{prev[prev.find(":"):]}, {self._film}')
+        prev: str = super().__str__()
+        print(f'Created director{prev[prev.find(":"):]}, {self._film}')
 
     def __str__(self):
         prev: str = super().__str__()
@@ -143,21 +143,20 @@ def main():
     print(mercedes)
 
     print('\nЗадание 2')
+    print('Создание экземпляров класса:')
     employee = Employee('Random woman', 60, 600)
     actor = Actor('Kirill', 18, 1500, 'main')
-    director = Director('Michel', 19, 3600, 'director', 'The last choice')
+    director = Director('Michel', 19, 3600, 'The last choice')
     people = [employee, actor, director]
-    # print('Создание экземпляров класса:')
-    print(*people, sep='\n', end='\n\n')
 
     employee.name = 'Lida'
     actor.role = 'second'
     actor.salary = 1200
     director.film = 'The last chance'
-    director.role = 'BigBoss'
     director.salary += 1000
 
-    print(*people, sep='\n', end='\n\n')
+    print('Изменение:', *people, sep='\n')
+    print('Сборщик мусора:')
 
 
 if __name__ == '__main__':
