@@ -1,13 +1,13 @@
 # Вариант 9 Задание 1-18
 # Автобус
 class Bus:
-    counter = 0
+    amount = 0
     __name: str
     __speed: int
     __passengers: int
 
-    def __init__(self, name: str = 'nameless', speed: int = 0, passengers: int = 0):
-        Bus.counter += 1
+    def __init__(self, name: str = 'nameless', speed: int = 0, passengers: int = 0) -> None:
+        Bus.amount += 1
         self.__name = name
         self.__speed = speed
         self.__passengers = passengers
@@ -15,9 +15,9 @@ class Bus:
 
     def __str__(self) -> str:
         return f'Bus (name: {self.__name}, speed: {self.__speed}, ' \
-               f'passengers: {self.passengers}; counter: {Bus.counter})'
+               f'passengers: {self.passengers}; amount: {Bus.amount})'
 
-    def __del__(self):
+    def __del__(self) -> None:
         print(f'Deleted {self}')
 
     @property
@@ -52,7 +52,7 @@ class Employee:
     _age: int
     _salary: int
 
-    def __init__(self, name='nameless', age=0, salary=0):
+    def __init__(self, name='nameless', age=0, salary=0) -> None:
         self._name = name
         self._age = age
         self._salary = salary
@@ -61,75 +61,75 @@ class Employee:
     def __str__(self) -> str:
         return f'Employee: {self._name}, {self._age}, {self._salary}'
 
-    def __del__(self):
+    def __del__(self) -> None:
         print(f'Deleted {self}')
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
     @name.setter
-    def name(self, name):
+    def name(self, name) -> None:
         self._name = name
 
     @property
-    def age(self):
+    def age(self) -> int:
         return self._age
 
     @age.setter
-    def age(self, age):
+    def age(self, age) -> None:
         self._age = age
 
     @property
-    def salary(self):
+    def salary(self) -> int:
         return self._salary
 
     @salary.setter
-    def salary(self, salary):
+    def salary(self, salary) -> None:
         self._salary = salary
 
 
 class Actor(Employee):
     _role: str
 
-    def __init__(self, name='nameless', age=0, salary=0, role='empty'):
+    def __init__(self, name='nameless', age=0, salary=0, role='empty') -> None:
         super().__init__(name, age, salary)
         self._role = role
         prev: str = super().__str__()
         print(f'Created actor{prev[prev.find(":"):]}, {self._role}')
 
-    def __str__(self):
+    def __str__(self) -> str:
         prev: str = super().__str__()
         return 'Actor' + prev[prev.find(':'):] + f', {self._role}'
 
     @property
-    def role(self):
+    def role(self) -> str:
         return self._role
 
     @role.setter
-    def role(self, role):
+    def role(self, role) -> None:
         self._role = role
 
 
 class Director(Employee):
     _film: str
 
-    def __init__(self, name='nameless', age=0, salary=0, film='secret'):
+    def __init__(self, name='nameless', age=0, salary=0, film='secret') -> None:
         super().__init__(name, age, salary)
         self._film = film
         prev: str = super().__str__()
         print(f'Created director{prev[prev.find(":"):]}, {self._film}')
 
-    def __str__(self):
+    def __str__(self) -> str:
         prev: str = super().__str__()
         return 'Director' + prev[prev.find(':'):] + f', {self._film}'
 
     @property
-    def film(self):
+    def film(self) -> str:
         return self._film
 
     @film.setter
-    def film(self, film):
+    def film(self, film) -> None:
         self._film = film
 
 
