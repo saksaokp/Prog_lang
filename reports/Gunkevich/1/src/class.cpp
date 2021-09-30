@@ -1,35 +1,32 @@
 #include "class.h"
 #include <iostream>
-    resorces::resorces():name(0), age(0), rank(0) { std::cout << "ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð±ÐµÐ· Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² Ð²Ñ‹Ð·Ð²Ð°Ð½"<<std::endl; }
-    resorces::resorces(const char* n, int a, int g)
-    {
-        std::cout << "ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ñ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð²Ñ‹Ð·Ð²Ð°Ð½" << std::endl;
-        name = n;
-        age = a;
-        rank = g;
-    }
+resorces::resorces() :name(0), age(0), rank(0) { std::cout << "Êîíñòðóêòîð áåç ïàðàìåòðîâ âûçâàí" << std::endl; }
+resorces::resorces(const char* n, int a, int g)
+{
+    std::cout << "Êîíñòðóêòîð ñ ïàðàìåòðàìè âûçâàí" << std::endl;
+    name = n;
+    age = a;
+    rank = g;
+}
 
-    resorces::resorces(const resorces& s)//ÐºÐ¾Ð¿Ð¸Ñ€ÑƒÑŽÑ‰Ð¸Ð¹ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
-    {
-        std::cout << "ÐšÐ¾Ð¿Ð¸Ñ€ÑƒÑŽÑ‰Ð¸Ð¹ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð²Ñ‹Ð·Ð²Ð°Ð½" << std::endl;
-        this->name = s.name;
-        this->age = s.age;
-        this->rank = s.rank;
-    }
-     resorces::~resorces()
-    {
-        std::cout << "Deleting data" << std::endl;
-        name = 0;
-        age = 0;
-        rank = 0;
-    }
-    void resorces:: set(const char* n, int a, int g)//ÑƒÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð¿Ð¾Ð»ÐµÐ¹ Ð´Ð°Ð½Ð½Ñ‹Ñ…
-    {
-        name = n;
-        age = a;
-        rank = g;
-    }
-    void  resorces::print()//Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ Ð¿Ð¾Ð»ÐµÐ¹ Ð´Ð°Ð½Ð½Ñ‹Ñ…
-    {
-        std::cout << name << " " << age << " " << rank << std::endl;
-    }
+resorces::resorces(const resorces& s)//êîïèðóþùèé êîíñòðóêòîð
+{
+    std::cout << "Êîïèðóþùèé êîíñòðóêòîð âûçâàí" << std::endl;
+    this->name = s.name;
+    this->age = s.age;
+    this->rank = s.rank;
+}
+resorces::~resorces()
+{
+    std::cout << "Deleting data" << std::endl;
+}
+void resorces::set(const char* n, int a, int g)//óñòàíîâêà ïîëåé äàííûõ
+{
+    name = n;
+    age = a;
+    rank = g;
+}
+void  resorces::print()//ïðîñìîòð ïîëåé äàííûõ
+{
+    std::cout << name << " " << age << " " << rank << std::endl;
+}
