@@ -5,6 +5,7 @@
 using namespace std;
 const float PI = 3.141592653589793;
 
+
 // Фигураы:
 // Ромб, параллелипипед, эллипс
 
@@ -41,6 +42,14 @@ public:
             cout << "  ";
             figure->printSP();
         }
+    }
+
+    bool operator==(Figure &other) {
+        return (typeid(*this) == typeid(other)) && (a == other.a) && (b == other.b) && (s() == other.s());
+    }
+
+    bool operator!=(Figure &other) {
+        return !(*this == other);
     }
 };
 
@@ -119,8 +128,11 @@ list<Figure *> Figure::figures;
 
 int main() {
     Parallelepiped pip(3, 6, PI / 3);
+    Parallelepiped pip2(3, 6, PI / 2);
     Rhombus sus(2, PI / 6);
     Ellipse ell(2, 8);
+    cout << '\n';
     Figure::show();
+    cout << '\n';
 
 }
