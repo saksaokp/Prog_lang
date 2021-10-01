@@ -3,7 +3,7 @@
 #include <list>
 
 using namespace std;
-
+const float PI = 3.141592653589793;
 
 // Фигураы:
 // Ромб, параллелипипед, эллипс
@@ -38,31 +38,48 @@ public:
     static void show() {
         for (auto &figure : figures) {
             figure->print();
+            cout << "  ";
             figure->printSP();
         }
     }
 };
 
 
-class Rhombus : public Figure {
+class Parallelepiped : public Figure {
 protected:
     float alpha;
 
 public:
-    Rhombus(float a, float alpha) : Figure(a, a), alpha(alpha) {
+    Parallelepiped(float a, float b, float alpha) : Figure(a, b), alpha(alpha) {
+        cout << "Created Parallelepiped: a = " << a << ", b = " << b << ", alpha = " << alpha << "\n";
+    }
+
+    ~Parallelepiped() {
+        cout << "Deleted Parallelepiped: a = " << a << ", b = " << b << ", alpha = " << alpha << "\n";
+    }
+
+    float s() override {
+        return a * b * sin(alpha);
+    }
+
+    float p() override {
+        return (a + b) * 2;
+    }
+
+    void print() override {
+        cout << "Parallelepiped: a = " << a << ", b = " << b << ", alpha = " << alpha << "\n";
+    }
+};
+
+
+class Rhombus : public Parallelepiped {
+public:
+    Rhombus(float a, float alpha) : Parallelepiped(a, a, alpha) {
         cout << "Created Rhombus: a = b = " << a << ", alpha = " << alpha << "\n";
     }
 
     ~Rhombus() {
         cout << "Deleted Rhombus: a = b = " << a << ", alpha = " << alpha << " rad\n";
-    }
-
-    float s() override {
-        return a * a * sin(alpha);
-    }
-
-    float p() override {
-        return a * 4;
     }
 
     void print() override {
@@ -71,12 +88,39 @@ public:
 };
 
 
+class Ellipse : public Figure {
+public:
+    Ellipse(float a, float b) : Figure(a, b) {
+        // a, b - полуоси эллипса
+        cout << "Created Ellipse: a = " << a << ", b = " << b << "\n";
+    }
+
+    ~Ellipse() {
+        cout << "Deleted Ellipse: a = " << a << ", b = " << b << "\n";
+    }
+
+    float s() override {
+        return PI * a * b;
+    }
+
+    float p() override {
+        // return 2 * PI * sqrt((a * a + b * b) / 2);
+        return float(4 * (PI * a * b + pow((a - b), 2)) / (a + b));
+    }
+
+    void print() override {
+        cout << "Ellipse: a = " << a << ", b = " << b << "\n";
+    }
+};
+
+
 list<Figure *> Figure::figures;
 
 
 int main() {
-    const float PI = 3.141592653589793;
-    Rhombus r(2, PI / 6);
+    Parallelepiped pip(3, 6, PI / 3);
+    Rhombus sus(2, PI / 6);
+    Ellipse ell(2, 8);
     Figure::show();
 
 }
