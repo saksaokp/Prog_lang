@@ -14,7 +14,7 @@ def task_1_2():
   l = [19, 6, 38, 'ms(PZS*SXsu', 27, 9, 66, '2&8Lnt3c&q', 99, 't#Eavz', 97, '*Fj#mi%tKPayi', 51, 45, 'hHT#AeQ*S*MM#246', 'QuXpiBBfJkQSsKco', 51, 'RqUBECOUEKvETvhr', 98, 'gAH%pMMUw##pHJm', 83, 'sHs08y1uV6Or9', '2W59udOnK', 'qv8rfV4m02', 9, '8J5MNy#Y2E)6Jg*', 26, 'ahtHhBUIEvaoxHvW', 3, 'xk6P5)XZ0#o', 'ZxMGDq', 15, '7*%AB98V', 'BndpoLtjsIwxvuT', 96, '9CkkLi#)1eV', '9G28ev(', '#MQ9y*e7WVSc)0x', '*d(CPaqBbM%#gRuU', 'GpzLpXuyWD', 'zbznrUsMd', 'FOy1ip1qW65Bh0', 'x9f8sMz2XZ5', 'ZVWwKj%', 'bsguivasnPN', 47, 43, 'UJmyjaLPIFkk', 'zeAOOruqdWC', 'aUJUwkqRSxVucbro', 'WJenLtAF', 50, 'oxEuJxWeagEvx', 'ENe*6m22##7B1(zp', 'QV(yvfliYf)']
   print('\nДан список', l)
   print('Нечётные элементы списка: ', end = '')
-  for i in range(0, len(l), 2):
+  for i in range(1, len(l), 2):
     print(l[i], end = ' ')
   print('\n')
 
