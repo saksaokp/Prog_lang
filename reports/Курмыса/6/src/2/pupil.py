@@ -5,16 +5,16 @@ class Pupil:
   _age = int()
   _town = str()
 
-  def __init__(self, name='Учащийся', age=0, town='Город_учащийся'):
+  def __init__(self, name='РЈС‡Р°С‰РёР№СЃСЏ', age=0, town='Р“РѕСЂРѕРґ_СѓС‡Р°С‰РёР№СЃСЏ'):
     Pupil.count += 1
     self.__pupil_number = Pupil.count
-    print('Вызов конструктора класса Pupil No.', self.__pupil_number)
+    print('Р’С‹Р·РѕРІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РєР»Р°СЃСЃР° Pupil No.', self.__pupil_number)
     self._name = name
     self._age = int(age)
     self._town = town
   
   def __del__(self):
-    print('Удаляется объект класса Pupil No.', self.__pupil_number)
+    print('РЈРґР°Р»СЏРµС‚СЃСЏ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Pupil No.', self.__pupil_number)
   
   def get_name(self):
     return self._name
@@ -36,11 +36,11 @@ class Pupil:
 
   def read(self):
     try:
-      self._name = input('Введите имя учащегося: ')
-      self._age = int(input('Введите возраст учащегося: '))
-      self._town = input('Введите город учащегося: ')
+      self._name = input('Р’РІРµРґРёС‚Рµ РёРјСЏ СѓС‡Р°С‰РµРіРѕСЃСЏ: ')
+      self._age = int(input('Р’РІРµРґРёС‚Рµ РІРѕР·СЂР°СЃС‚ СѓС‡Р°С‰РµРіРѕСЃСЏ: '))
+      self._town = input('Р’РІРµРґРёС‚Рµ РіРѕСЂРѕРґ СѓС‡Р°С‰РµРіРѕСЃСЏ: ')
     except ValueError as e:
       print(e)
   
   def show(self):
-    print('Имя:', self._name, '\nВозраст:', self._age, '\nГород:', self._town, end='\n\n')
+    print('РРјСЏ:', self._name, '\nР’РѕР·СЂР°СЃС‚:', self._age, '\nР“РѕСЂРѕРґ:', self._town, end='\n\n')
