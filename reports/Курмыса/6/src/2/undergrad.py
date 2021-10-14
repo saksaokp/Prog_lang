@@ -3,19 +3,19 @@ from student import Student
 class Undergrad(Student):
   count = 0
   __undergrad_number = 0
-  _project_theme = str() # тема проекта
-  _director = str() # научный руководитель
+  _project_theme = str() # С‚РµРјР° РїСЂРѕРµРєС‚Р°
+  _director = str() # РЅР°СѓС‡РЅС‹Р№ СЂСѓРєРѕРІРѕРґРёС‚РµР»СЊ
 
-  def __init__(self, name='Магистрант', age=0, town='Город_магистрант', course=0, specialty='Специальность_магистрант', university='Университет_магистрант', project_theme='Темапроекта_магистрант', director='Научрук_магистрант'):
+  def __init__(self, name='РњР°РіРёСЃС‚СЂР°РЅС‚', age=0, town='Р“РѕСЂРѕРґ_РјР°РіРёСЃС‚СЂР°РЅС‚', course=0, specialty='РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ_РјР°РіРёСЃС‚СЂР°РЅС‚', university='РЈРЅРёРІРµСЂСЃРёС‚РµС‚_РјР°РіРёСЃС‚СЂР°РЅС‚', project_theme='РўРµРјР°РїСЂРѕРµРєС‚Р°_РјР°РіРёСЃС‚СЂР°РЅС‚', director='РќР°СѓС‡СЂСѓРє_РјР°РіРёСЃС‚СЂР°РЅС‚'):
     Undergrad.count += 1
     self.__undergrad_number = Undergrad.count
-    print('Вызов конструктора класса Undergrad No.', self.__undergrad_number)
+    print('Р’С‹Р·РѕРІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РєР»Р°СЃСЃР° Undergrad No.', self.__undergrad_number)
     super(Undergrad, self).__init__(name, age, town, course, specialty, university)
     self._project_theme = project_theme
     self._director = director
   
   def __del__(self):
-    print('Удаляется объект класса Undergrad No.', self.__undergrad_number)
+    print('РЈРґР°Р»СЏРµС‚СЃСЏ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Undergrad No.', self.__undergrad_number)
     super().__del__()
   
   def get_project_theme(self):
@@ -32,24 +32,24 @@ class Undergrad(Student):
   
   def read(self):
     try:
-      self._name = input('Введите имя магистранта: ')
-      self._age = int(input('Введите возраст магистранта: '))
-      self._town = input('Введите город магистранта: ')
-      self._course = int(input('Введите курс магистранта: '))
-      self._specialty = input('Введите специальность магистранта: ')
-      self._university = input('Введите университет магистранта: ')
-      self._project_theme = input('Введите тему научного проекта: ')
-      self._director = input('Введите ФИО начуного руководителя: ')
+      self._name = input('Р’РІРµРґРёС‚Рµ РёРјСЏ РјР°РіРёСЃС‚СЂР°РЅС‚Р°: ')
+      self._age = int(input('Р’РІРµРґРёС‚Рµ РІРѕР·СЂР°СЃС‚ РјР°РіРёСЃС‚СЂР°РЅС‚Р°: '))
+      self._town = input('Р’РІРµРґРёС‚Рµ РіРѕСЂРѕРґ РјР°РіРёСЃС‚СЂР°РЅС‚Р°: ')
+      self._course = int(input('Р’РІРµРґРёС‚Рµ РєСѓСЂСЃ РјР°РіРёСЃС‚СЂР°РЅС‚Р°: '))
+      self._specialty = input('Р’РІРµРґРёС‚Рµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ РјР°РіРёСЃС‚СЂР°РЅС‚Р°: ')
+      self._university = input('Р’РІРµРґРёС‚Рµ СѓРЅРёРІРµСЂСЃРёС‚РµС‚ РјР°РіРёСЃС‚СЂР°РЅС‚Р°: ')
+      self._project_theme = input('Р’РІРµРґРёС‚Рµ С‚РµРјСѓ РЅР°СѓС‡РЅРѕРіРѕ РїСЂРѕРµРєС‚Р°: ')
+      self._director = input('Р’РІРµРґРёС‚Рµ Р¤РРћ РЅР°С‡СѓРЅРѕРіРѕ СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ: ')
     except ValueError as e:
       print(e)
   
   def show(self):
     print(
-      'Имя:', self._name, 
-      '\nВозраст:', self._age,
-       '\nГород:', self._town, 
-       '\nКурс:', self._course,
-        '\nСпециальность:', self._specialty,
-         '\nУниверситет:', self._university, 
-         '\nТема проекта:', self._project_theme,
-          '\nФИО научного руководителя:', self._director, end='\n\n')
+      'РРјСЏ:', self._name, 
+      '\nР’РѕР·СЂР°СЃС‚:', self._age,
+       '\nР“РѕСЂРѕРґ:', self._town, 
+       '\nРљСѓСЂСЃ:', self._course,
+        '\nРЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ:', self._specialty,
+         '\nРЈРЅРёРІРµСЂСЃРёС‚РµС‚:', self._university, 
+         '\nРўРµРјР° РїСЂРѕРµРєС‚Р°:', self._project_theme,
+          '\nР¤РРћ РЅР°СѓС‡РЅРѕРіРѕ СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:', self._director, end='\n\n')
