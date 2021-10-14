@@ -15,9 +15,7 @@ int main()
 	Trial t2(2, "tname2", "sponsor2");
 
 	Exam::ShowAll();
-	cout << "\n";
 	FinalExam::ShowAll();
-	cout << "\n";
 	Trial::ShowAll();
 
 	getchar();

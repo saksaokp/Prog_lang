@@ -18,8 +18,8 @@ public:
 	Test(int, string);
 
 	virtual ~Test();
-	virtual void Add();
-	virtual void Show();
+	virtual void Add() = 0;
+	virtual void Show() = 0;
 
 	static void ShowAll();	
 };
