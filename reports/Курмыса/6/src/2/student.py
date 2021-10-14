@@ -7,17 +7,17 @@ class Student(Pupil):
   _specialty = str()
   _university = str()
 
-  def __init__(self, name='Студент', age=0, town='Город_студент', course=0, specialty='Специальность_студент', university='Университет_студент'):
+  def __init__(self, name='РЎС‚СѓРґРµРЅС‚', age=0, town='Р“РѕСЂРѕРґ_СЃС‚СѓРґРµРЅС‚', course=0, specialty='РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ_СЃС‚СѓРґРµРЅС‚', university='РЈРЅРёРІРµСЂСЃРёС‚РµС‚_СЃС‚СѓРґРµРЅС‚'):
     Student.count += 1
     self.__student_number = Student.count
-    print('Вызов конструктора класса Student No.', self.__student_number)
+    print('Р’С‹Р·РѕРІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РєР»Р°СЃСЃР° Student No.', self.__student_number)
     super().__init__(name, age, town)
     self._course = int(course)
     self._specialty = specialty
     self._university = university
   
   def __del__(self):
-    print('Удаляется объект класса Student No.', self.__student_number)
+    print('РЈРґР°Р»СЏРµС‚СЃСЏ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Student No.', self.__student_number)
     super().__del__()
 
   def get_course(self):
@@ -40,20 +40,20 @@ class Student(Pupil):
   
   def read(self):
     try:
-      self._name = input('Введите имя студента: ')
-      self._age = int(input('Введите возраст студента: '))
-      self._town = input('Введите город студента: ')
-      self._course = int(input('Введите курс студента: '))
-      self._specialty = input('Введите специальность студента: ')
-      self._university = input('Введите университет студента: ')
+      self._name = input('Р’РІРµРґРёС‚Рµ РёРјСЏ СЃС‚СѓРґРµРЅС‚Р°: ')
+      self._age = int(input('Р’РІРµРґРёС‚Рµ РІРѕР·СЂР°СЃС‚ СЃС‚СѓРґРµРЅС‚Р°: '))
+      self._town = input('Р’РІРµРґРёС‚Рµ РіРѕСЂРѕРґ СЃС‚СѓРґРµРЅС‚Р°: ')
+      self._course = int(input('Р’РІРµРґРёС‚Рµ РєСѓСЂСЃ СЃС‚СѓРґРµРЅС‚Р°: '))
+      self._specialty = input('Р’РІРµРґРёС‚Рµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ СЃС‚СѓРґРµРЅС‚Р°: ')
+      self._university = input('Р’РІРµРґРёС‚Рµ СѓРЅРёРІРµСЂСЃРёС‚РµС‚ СЃС‚СѓРґРµРЅС‚Р°: ')
     except ValueError as e:
       print(e)
   
   def show(self):
     print(
-      'Имя:', self._name, 
-      '\nВозраст:', self._age, 
-      '\nГород:', self._town, 
-      '\nКурс:', self._course, 
-      '\nСпециальность:', self._specialty, 
-      '\nУниверситет:', self._university, end='\n\n')
+      'РРјСЏ:', self._name, 
+      '\nР’РѕР·СЂР°СЃС‚:', self._age, 
+      '\nР“РѕСЂРѕРґ:', self._town, 
+      '\nРљСѓСЂСЃ:', self._course, 
+      '\nРЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ:', self._specialty, 
+      '\nРЈРЅРёРІРµСЂСЃРёС‚РµС‚:', self._university, end='\n\n')
