@@ -13,13 +13,9 @@ const float PI = 3.141592653589793;
 class Figure {
 protected:
     float a, b;
-    static list<Figure *> figures;
 
 public:
-    Figure(float a, float b) : a(a), b(b) {
-        figures.push_back(this);
-    }
-
+    Figure(float a, float b) : a(a), b(b) {}
 
     virtual float s() const = 0;
 
@@ -29,15 +25,6 @@ public:
 
     virtual void printSP() const final {
         cout << "S = " << s() << ", P = " << p() << "\n";
-    }
-
-    static void show() {
-        for (auto &figure : figures) {
-            figure->print();
-            cout << "  ";
-            figure->printSP();
-            cout << "\n";
-        }
     }
 
     bool operator==(const Figure &other) {
@@ -71,7 +58,7 @@ public:
     }
 
     void print() const override {
-        cout << "Parallelepiped: a = " << a << ", b = " << b << ", alpha = " << alpha << "\n";
+        cout << "Parallelepiped: a = " << a << ", b = " << b << ", alpha = " << alpha << " rad\n";
     }
 };
 
@@ -104,46 +91,44 @@ public:
 };
 
 
-class FiguresList {
-    FiguresList *next;
-    FiguresList *last;
-    Figure *self;
+class FiguresArray {
+    Figure **ptrArray;  // Массив указателей на фигуры
+    int count;  // Количество
 
 public:
-    FiguresList() : next(nullptr), last(nullptr), self(nullptr) {}
+    FiguresArray() : ptrArray(nullptr), count(0) {}
 
     void add(Figure *figure) {
-        if (last == nullptr) {
-            self = figure;
-            last = this;
+        if (count == 0) {
+            count = 1;
+            ptrArray = new Figure *;
+            ptrArray[0] = figure;
         } else {
-            last->next = new FiguresList;
-            last = last->next;
-            last->self = figure;
+            count++;
+            auto temp = ptrArray;
+            ptrArray = new Figure *[count];
+            for (int i = 0; i < count; i++) {
+                ptrArray[i] = temp[i];
+            }
+            ptrArray[count - 1] = figure;
+            delete[] temp;
         }
     }
 
     void print() const {
-        if (last != nullptr) {
-            self->print();
-            const FiguresList *ptr = this;
-            while (ptr->next != nullptr) {
-                ptr = ptr->next;
-                ptr->self->print();
-            }
+        for (int i = 0; i < count; i++) {
+            ptrArray[i]->print();
         }
     }
 
-    Figure &operator[](int x) {
-        FiguresList *ptr = this;
-        for (int i = 0; i < x; i++) {
-            ptr = ptr->next;
-        }
-        return *ptr->self;
-    }
+//    Figure &operator[](int x) {
+//        FiguresArray *ptr = this;
+//        for (int i = 0; i < x; i++) {
+//            ptr = ptr->next;
+//        }
+//        return *ptr->self;
+//    }
 };
-
-list<Figure *> Figure::figures;
 
 
 int main() {
@@ -151,13 +136,11 @@ int main() {
     Rhombus sus(2, PI / 6);
     Ellipse ell(2, 8);
 
-    Figure::show();
-
-    FiguresList figures;
+    FiguresArray figures;
     figures.add(&pip);
     figures.add(&sus);
     figures.add(&ell);
-    figures[0] = figures[1];
+//    figures[0] = figures[1];
     figures.print();
 
 }
