@@ -148,15 +148,31 @@ def main():
     actor = Actor('Kirill', 18, 1500, 'main')
     director = Director('Michel', 19, 3600, 'The last choice')
     people = [employee, actor, director]
+    print('\nРезультат:', *people, sep='\n')
 
-    employee.name = 'Lida'
-    actor.role = 'second'
-    actor.salary = 1200
-    director.film = 'The last chance'
-    director.salary += 1000
+    print('\nИзменение с консоли:')
+    ans = input(f'Хотите ли вы поменять поля у {employee.name}? (y/n):')
+    if ans == 'y':
+        employee.name = input('employee.name: ')
+        employee.age = int(input('employee.age: '))
+        employee.salary = int(input('employee.salary: '))
 
-    print('Изменение:', *people, sep='\n')
-    print('Сборщик мусора:')
+    ans = input(f'Хотите ли вы поменять поля у {actor.name}? (y/n):')
+    if ans == 'y':
+        actor.name = input('actor.name: ')
+        actor.age = int(input('actor.age: '))
+        actor.salary = int(input('actor.salary: '))
+        actor.role = input('actor.role: ')
+
+    ans = input(f'Хотите ли вы поменять поля у {director.name}? (y/n):')
+    if ans == 'y':
+        director.name = input('director.name: ')
+        director.age = int(input('director.age: '))
+        director.salary = int(input('director.salary: '))
+        director.film = input('director.film: ')
+
+    print('\nРезультат:', *people, sep='\n')
+    print('\nСборщик мусора:')
 
 
 if __name__ == '__main__':
