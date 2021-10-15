@@ -1,13 +1,13 @@
+import os
+import csv
 from pprint import pprint
 from typing import List, Tuple, Union
-import csv
 
 Header = List[str]
 Students = List[List[Union[str, int]]]
-Table = Tuple[Header, Students]
 
 
-def load(filename: str) -> Table:
+def load(filename: str) -> Tuple[Header, Students]:
     with open(filename, 'r', encoding='utf-8') as file:
         reader = csv.reader(file, delimiter=';')
         students = list(reader)
@@ -39,7 +39,7 @@ def decrease(students) -> None:
     print_all('\nУменьшено на 1:', None, students)
 
 
-def save(filename, header, students) -> None:
+def save(filename: str, header, students) -> None:
     pprint(header)
     print(students)
 
@@ -48,6 +48,11 @@ def save(filename, header, students) -> None:
         writer.writerows([header] + students)
 
     print_all(f'Сохранено в "{filename}":', header, students)
+
+
+def check_dir(directory: str = '.'):
+    files = os.listdir(directory)
+    print(f'Файлов в папке "{directory}" {len(files)}:', *files, sep='\n   ', end='\n\n')
 
 
 def menu(header, students) -> None:
@@ -70,6 +75,8 @@ def menu(header, students) -> None:
 
 
 def main():
+    check_dir('files/')
+
     header, students = load('files/students.csv')
     students.sort(key=lambda x: x[1])
     print_all(f'Отсортированная по фамилиям таблица: ', header, students)
