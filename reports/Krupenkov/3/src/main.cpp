@@ -1,13 +1,12 @@
 #include <iostream>
 #include <cmath>
-#include <list>
 
 using namespace std;
 const float PI = 3.141592653589793;
 
 
-// Фигураы:
-// Ромб, параллелипипед, эллипс
+// Фигуры:
+// Ромб, параллелепипед, эллипс
 
 
 class Figure {
@@ -36,6 +35,8 @@ public:
     }
 
     Figure &operator=(const Figure &other) {
+        a = other.a;
+        b = other.b;
         return *this;
     }
 };
@@ -59,6 +60,8 @@ public:
     void print() const override {
         cout << "Parallelepiped: a = " << a << ", b = " << b << ", alpha = " << alpha << " rad\n";
     }
+
+
 };
 
 
@@ -90,18 +93,22 @@ public:
 };
 
 
-class FiguresArray {
+class FiguresPtrArray {
     Figure **ptrArray;  // Массив указателей на фигуры
-    int count;  // Количество
+    int count;  // Количество элементов в массиве указателей
 
 public:
-    FiguresArray() : ptrArray(nullptr), count(0) {}
+    FiguresPtrArray() : ptrArray(nullptr), count(0) {}
 
-    void add(Figure &figure) {
+    int len() const {
+        return count;
+    }
+
+    void addBack(Figure *figure) {
         if (count == 0) {
             count = 1;
             ptrArray = new Figure *;
-            ptrArray[0] = &figure;
+            ptrArray[0] = figure;
         } else {
             count++;
             auto temp = ptrArray;
@@ -109,7 +116,7 @@ public:
             for (int i = 0; i < count; i++) {
                 ptrArray[i] = temp[i];
             }
-            ptrArray[count - 1] = &figure;
+            ptrArray[count - 1] = figure;
             delete[] temp;
         }
     }
@@ -120,23 +127,29 @@ public:
         }
     }
 
-    Figure &operator[](int i) {
-        return *ptrArray[i];
+    Figure *operator[](int i) {
+        return (i >= 0) ? ptrArray[i] : ptrArray[count + i];
     }
 };
 
 
 int main() {
     Parallelepiped parallelepiped(3, 6, PI / 3);
-    Rhombus rhombus(2, PI / 6);
+    Rhombus rhombus(4, PI / 6);
     Ellipse ellipse(2, 8);
 
-    FiguresArray figures;
-    figures.add(parallelepiped);
-    figures.add(rhombus);
-    figures.add(ellipse);
-    figures[0] = figures[1];
-    figures.print();
-//    figures[2].print();
+    FiguresPtrArray figures;
+    figures.addBack(&parallelepiped);
+    figures.addBack(&rhombus);
+    figures.addBack(&ellipse);
 
+    for (int i = 0; i < figures.len(); i++) {
+        figures[i]->print();
+        figures[i]->printSP();
+    }
+
+    cout << endl;
+    figures.addBack(figures[-1]);
+    figures.print();
+    cout << "\n(figures[-1] == figures[-2]) = " << (figures[-1] == figures[-2]);
 }
