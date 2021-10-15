@@ -3,9 +3,11 @@ import csv
 
 target_file = 'students.csv'
 default_dict = 'D:\\'
+current_data = []
 
 
-def count_files(folder_path=default_dict):
+def count_files():
+	folder_path = input('Write path: ')
 	if not os.path.isdir(folder_path):
 		print('Not directory')
 		return
@@ -16,8 +18,8 @@ def count_files(folder_path=default_dict):
 	return output
 
 
-def read_csv(file):
-	with open(file, encoding='utf-8') as f:
+def read_csv(file_name=target_file):
+	with open(file_name, encoding='utf-8') as f:
 		reader = csv.reader(f, delimiter=';')
 
 		output = [row for row in reader]
@@ -25,12 +27,8 @@ def read_csv(file):
 
 
 def sort_by_group_number(data):
-	output = [data[0]] + sorted(data[1:], key=sort_key)
+	output = [data[0]] + sorted(data[1:], key=lambda x: int(x))
 	return output
-
-
-def sort_key(row):
-	return int(row[0])
 
 
 def display_data(data):
@@ -38,20 +36,20 @@ def display_data(data):
 		print(*row, sep='\t')
 
 
-def decrease_age(group, file=target_file):
-	data = read_csv(file)
+def decrease_age(group):
+	global current_data
 
-	for row in data[1:]:
+	for row in current_data[1:]:
 		if row[-1] == group:
 			row[-2] = str(int(row[-2]) - 1)
 
 	print('Result:')
-	display_data(data)
+	display_data(current_data)
 
 	if input('Save?\n(Y)es\t(N)o\n')[0].lower() == 'y':
-		save_changes(data)
+		save_changes(current_data)
 
-	return data
+	return current_data
 
 
 def save_changes(data, file=target_file):
@@ -61,15 +59,60 @@ def save_changes(data, file=target_file):
 	print('Saved!')
 
 
+def sort_csv_file():
+	global current_data
+	file_name = input('Write file name: ')
+	current_data = read_csv(file_name)
+	current_data = sort_by_group_number(current_data)
+	print('Done')
+
+
+def decrease_group_age():
+	group = input('Write target group')
+	decrease_age(group)
+	print('Done!')
+
+
+def read_target_file():
+	global current_data
+	file_name = input('File name: ')
+	current_data = read_csv(file_name)
+	print('Done!')
+
+
+def save_as():
+	file_name = input('Write file name: ')
+	save_changes(current_data, file_name)
+	print('Done!')
+
+
+def display():
+	display_data(current_data)
+
+
+def menu():
+	functions = {
+		1: count_files,
+		2: sort_csv_file,
+		3: decrease_group_age,
+		4: read_target_file,
+		5: save_as,
+		6: display
+	}
+
+	print('1. Count files')
+	print('2. Sort csv file')
+	print('3. Decrease group age')
+	print('4. Read csv file')
+	print('5. Save csv file as...')
+	print('6. Display data')
+	command = int(input('Selected: '))
+	functions[command]()
+
+
 def main():
-	print('Task 1 result: ')
-	print(count_files())
-
-	print('Task 2 result: ')
-	display_data(sort_by_group_number(read_csv(target_file)))
-
-	print('Task 3 result:')
-	decrease_age('БО-1111', target_file)
+	while 'Python is cool!':
+		menu()
 
 
 if __name__ == '__main__':

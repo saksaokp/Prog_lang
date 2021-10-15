@@ -149,7 +149,8 @@ def task16():
 
 
 def task17():
-    students = input('Enter info about students: ')
+    students = "ФИО;Возраст;Категория;Иванов Иван Иванович;23 года;" \
+               "Студент 3 курса;Петров Семен Игоревич;22 года;Студент 2 курса"
     split = students.split(';')
 
     output = '{0:30}{1:10}{2:15}'

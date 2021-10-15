@@ -8,6 +8,10 @@ class HRDepatrment:
 
 		self.__employees = employees
 
+	def __del__(self):
+		HRDepatrment.count -= 1
+		print('Disposed 1 object')
+
 	def get_employees(self):
 		return self.__employees
 
