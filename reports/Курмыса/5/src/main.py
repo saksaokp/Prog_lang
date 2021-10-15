@@ -44,25 +44,31 @@ def task_2():
     f.close()
 
 def task_3():
-    with open("files/task_3.csv", "r+") as f:
+    file_name = input('Введите имя файла, которое Вы будете использовать: ').lower()
+    with open(f"files/{file_name}.csv", "a+") as f:
+      count_of_strings = 0
       option = int(input('Выберите один из предложенных пунктов либо введите 0, чтобы выйти из функции:\n1 - Запись в файл;\n2 - Чтение из файла\n'))
       if option == 0:
         print('\nПроизводится выход из функции...')
       elif option == 1:
         writer = csv.writer(f)
+        writer.writerow(["№", "ФИО", "Возраст", "Группа"])
         while True:
-          s = input("Введите данные для файла через пробел в одну строку либо Enter для завершения работы функции: ").split()
-          if s:
-            writer.writerow(s)
-          else:
+          fio = input("Введите ФИО учащегося: ")
+          age = input("Введите возраст учащегося: ")
+          group_name = input("Введите группу учащегося: ")
+          count_of_strings += 1
+          writer.writerow([str(count_of_strings), fio, age, group_name])
+          choice = input('\nЖелаете продолжить выполнение функции? [y/yes/да/1 - да, иначе - нет]\n').lower()
+          if choice not in ['y', 'yes', 'да', '1']:
             break
       elif option == 2:
+        f.seek(0)
         csv_f = csv.reader(f)
         for row in csv_f:
           print(','.join(row))
       else:
         print('Некорректный входной параметр!')
-
 
 print('Лабораторная работа №5:\nФайловая система Python')
 while True:
