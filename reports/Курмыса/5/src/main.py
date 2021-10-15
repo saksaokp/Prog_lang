@@ -44,7 +44,8 @@ def task_2():
     f.close()
 
 def task_3():
-    with open("files/task_3.csv", "r+") as f:
+    file_name = input('Введите имя файла, которое Вы будете использовать: ').lower()
+    with open(f"files/{file_name}.csv", "a+") as f:
       count_of_strings = 0
       option = int(input('Выберите один из предложенных пунктов либо введите 0, чтобы выйти из функции:\n1 - Запись в файл;\n2 - Чтение из файла\n'))
       if option == 0:
@@ -62,12 +63,12 @@ def task_3():
           if choice not in ['y', 'yes', 'да', '1']:
             break
       elif option == 2:
+        f.seek(0)
         csv_f = csv.reader(f)
         for row in csv_f:
           print(','.join(row))
       else:
         print('Некорректный входной параметр!')
-
 
 print('Лабораторная работа №5:\nФайловая система Python')
 while True:
