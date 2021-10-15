@@ -38,7 +38,6 @@ public:
     Figure &operator=(const Figure &other) {
         return *this;
     }
-
 };
 
 
@@ -98,11 +97,11 @@ class FiguresArray {
 public:
     FiguresArray() : ptrArray(nullptr), count(0) {}
 
-    void add(Figure *figure) {
+    void add(Figure &figure) {
         if (count == 0) {
             count = 1;
             ptrArray = new Figure *;
-            ptrArray[0] = figure;
+            ptrArray[0] = &figure;
         } else {
             count++;
             auto temp = ptrArray;
@@ -110,7 +109,7 @@ public:
             for (int i = 0; i < count; i++) {
                 ptrArray[i] = temp[i];
             }
-            ptrArray[count - 1] = figure;
+            ptrArray[count - 1] = &figure;
             delete[] temp;
         }
     }
@@ -121,26 +120,23 @@ public:
         }
     }
 
-//    Figure &operator[](int x) {
-//        FiguresArray *ptr = this;
-//        for (int i = 0; i < x; i++) {
-//            ptr = ptr->next;
-//        }
-//        return *ptr->self;
-//    }
+    Figure &operator[](int i) {
+        return *ptrArray[i];
+    }
 };
 
 
 int main() {
-    Parallelepiped pip(3, 6, PI / 3);
-    Rhombus sus(2, PI / 6);
-    Ellipse ell(2, 8);
+    Parallelepiped parallelepiped(3, 6, PI / 3);
+    Rhombus rhombus(2, PI / 6);
+    Ellipse ellipse(2, 8);
 
     FiguresArray figures;
-    figures.add(&pip);
-    figures.add(&sus);
-    figures.add(&ell);
-//    figures[0] = figures[1];
+    figures.add(parallelepiped);
+    figures.add(rhombus);
+    figures.add(ellipse);
+    figures[0] = figures[1];
     figures.print();
+//    figures[2].print();
 
 }
