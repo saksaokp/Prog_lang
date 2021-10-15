@@ -129,7 +129,7 @@ def task3_5() -> None:
 
 
 def task3_6() -> None:
-    print('\nЗадание 3.6 - удаление стоки по введенному номеру')
+    print('\nЗадание 3.6 - удаление строки по введенному номеру')
     matrix = deepcopy(MATRIX)
     del_line = int(input('Введите номер (с нуля): '))
     matrix.pop(del_line)
@@ -146,9 +146,9 @@ def task3_7() -> None:
 def task3_8() -> None:
     print('\nЗадание 3.8 - поиск по координатам')
     matrix = deepcopy(MATRIX)
-    line = int(input('Строка матрицы (с нуля): '))
-    column = int(input('Столбец матрицы (с нуля): '))
-    print(matrix[line][column])
+    column = int(input('Столбец матрицы (с единицы): x = '))
+    line = int(input('Строка матрицы (с единицы):  y = '))
+    print(matrix[line - 1][column - 1])
 
 
 def task4_1() -> None:
@@ -238,17 +238,7 @@ def task6_4() -> None:
 
 
 def main() -> None:
-    functions = [
-        [task1_1, task1_2, task1_3, task1_4],
-        [task2_1, task2_2, task2_3, task2_4],
-        [task3_1, task3_2, task3_4, task3_5, task3_6, task3_7, task3_8],
-        [task4_1, task4_2, task4_3, task4_4],
-        [],
-        [task6_1, task6_2, task6_3, task6_4],
-    ]
-
-    while True:
-        print("""
+    print("""
 ij  Номера функций:
     Задание 1
 11. Задание 1-1
@@ -263,7 +253,6 @@ ij  Номера функций:
     Задание 3 «Матрицы»
 31. Задание 3-1
 32. Задание 3-2
-33. Задание 3-3
 34. Задание 3-4
 35. Задание 3-5
 36. Задание 3-6
@@ -281,7 +270,18 @@ ij  Номера функций:
 64. Задание 6-4
 00. Выход из программы        
         """)
-        ans = input('Введите двузначный номер функции: ')
+
+    functions = [
+        [task1_1, task1_2, task1_3, task1_4],
+        [task2_1, task2_2, task2_3, task2_4],
+        [task3_1, task3_2, None, task3_4, task3_5, task3_6, task3_7, task3_8],
+        [task4_1, task4_2, task4_3, task4_4],
+        None,
+        [task6_1, task6_2, task6_3, task6_4],
+    ]
+
+    while True:
+        ans = input('[MENU] Введите двузначный номер функции: ')
         if len(ans) == 2:
             i, j = map(int, ans)
 
