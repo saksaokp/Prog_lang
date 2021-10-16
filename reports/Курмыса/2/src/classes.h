@@ -3,59 +3,59 @@
 
 using namespace std;
 
-class Document { // класс Документ
-public:
+class Document { // РєР»Р°СЃСЃ Р”РѕРєСѓРјРµРЅС‚
+  public:
     Document();
     Document(string, string);
-    virtual ~Document(); // так как есть виртуальные функции, то и деструктор должен быть виртуальным
-    virtual void show_item() = 0; // чистая виртуальная функция для дочерних классов
-    void add(); // функция добавления элементов в список
-    void del(); // удаление элементов из списка (при деструкторе)
-    static void show_list(); // для вывода списка элементов
-protected:
-    string date; // дата создания
-    string organisation; // организация, указанная в документе
-    static int index; // порядковый номер документа в списке
-    static int document_count; // статический элемент - кол-во документов
-    static Document** documents; // список документов
+    virtual ~Document(); // С‚Р°Рє РєР°Рє РµСЃС‚СЊ РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё, С‚Рѕ Рё РґРµСЃС‚СЂСѓРєС‚РѕСЂ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІРёСЂС‚СѓР°Р»СЊРЅС‹Рј
+    virtual void show_item() = 0; // С‡РёСЃС‚Р°СЏ РІРёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РґРѕС‡РµСЂРЅРёС… РєР»Р°СЃСЃРѕРІ
+    void add(); // С„СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРѕРє
+    void del(); // СѓРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РёР· СЃРїРёСЃРєР° (РїСЂРё РґРµСЃС‚СЂСѓРєС‚РѕСЂРµ)
+    static void show_list(); // РґР»СЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° СЌР»РµРјРµРЅС‚РѕРІ
+  protected:
+    string date; // РґР°С‚Р° СЃРѕР·РґР°РЅРёСЏ
+    string organisation; // РѕСЂРіР°РЅРёР·Р°С†РёСЏ, СѓРєР°Р·Р°РЅРЅР°СЏ РІ РґРѕРєСѓРјРµРЅС‚Рµ
+    static int index; // РїРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ РґРѕРєСѓРјРµРЅС‚Р° РІ СЃРїРёСЃРєРµ
+    static int document_count; // СЃС‚Р°С‚РёС‡РµСЃРєРёР№ СЌР»РµРјРµРЅС‚ - РєРѕР»-РІРѕ РґРѕРєСѓРјРµРЅС‚РѕРІ
+    static Document **documents; // СЃРїРёСЃРѕРє РґРѕРєСѓРјРµРЅС‚РѕРІ
 };
 
-class Receipt : public Document { // класс Квитанция
-public:
+class Receipt: public Document { // РєР»Р°СЃСЃ РљРІРёС‚Р°РЅС†РёСЏ
+  public:
     Receipt();
     Receipt(string, string, string, string, int);
     ~Receipt();
-    void show_item() override; // перезаписываем ЧВ-функцию из родительского в дочерний класс
-protected:
-    string sender; // отправитель денег или иных ценностей
-    string receiver; // получатель денег или иных ценностей
-    int cost; // стоимость денег или иных ценностей
-    static int receipt_count; // кол-во квитанций
+    void show_item() override; // РїРµСЂРµР·Р°РїРёСЃС‹РІР°РµРј Р§Р’-С„СѓРЅРєС†РёСЋ РёР· СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РІ РґРѕС‡РµСЂРЅРёР№ РєР»Р°СЃСЃ
+  protected:
+    string sender; // РѕС‚РїСЂР°РІРёС‚РµР»СЊ РґРµРЅРµРі РёР»Рё РёРЅС‹С… С†РµРЅРЅРѕСЃС‚РµР№
+    string receiver; // РїРѕР»СѓС‡Р°С‚РµР»СЊ РґРµРЅРµРі РёР»Рё РёРЅС‹С… С†РµРЅРЅРѕСЃС‚РµР№
+    int cost; // СЃС‚РѕРёРјРѕСЃС‚СЊ РґРµРЅРµРі РёР»Рё РёРЅС‹С… С†РµРЅРЅРѕСЃС‚РµР№
+    static int receipt_count; // РєРѕР»-РІРѕ РєРІРёС‚Р°РЅС†РёР№
 };
 
-class Invoice : public Document { // класс Накладная
-public:
+class Invoice: public Document { // РєР»Р°СЃСЃ РќР°РєР»Р°РґРЅР°СЏ
+  public:
     Invoice();
     Invoice(string, string, string, string, string);
     ~Invoice();
     void show_item() override;
-protected:
-    string goods; // перевозимый товар, его описание
-    string provider; // поставщик товара
-    string date_of_delivery; // дата доставки товара
-    static int invoice_count; // кол-во накладных
+  protected:
+    string goods; // РїРµСЂРµРІРѕР·РёРјС‹Р№ С‚РѕРІР°СЂ, РµРіРѕ РѕРїРёСЃР°РЅРёРµ
+    string provider; // РїРѕСЃС‚Р°РІС‰РёРє С‚РѕРІР°СЂР°
+    string date_of_delivery; // РґР°С‚Р° РґРѕСЃС‚Р°РІРєРё С‚РѕРІР°СЂР°
+    static int invoice_count; // РєРѕР»-РІРѕ РЅР°РєР»Р°РґРЅС‹С…
 };
 
-class Check : public Document { // Класс Чек
-public:
+class Check: public Document { // РљР»Р°СЃСЃ Р§РµРє
+  public:
     Check();
     Check(string, string, string, string, double);
     ~Check();
     void show_item() override;
-protected:
-    string payee; // чекодержатель
-    string drawer; // чекодатель
-    double amount; // цена, указанная в чеке
+  protected:
+    string payee; // С‡РµРєРѕРґРµСЂР¶Р°С‚РµР»СЊ
+    string drawer; // С‡РµРєРѕРґР°С‚РµР»СЊ
+    double amount; // С†РµРЅР°, СѓРєР°Р·Р°РЅРЅР°СЏ РІ С‡РµРєРµ
     static int check_count;
 };
 

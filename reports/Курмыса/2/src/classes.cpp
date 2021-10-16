@@ -4,142 +4,142 @@
 
 using namespace std;
 
-// конструктор по умолчанию для класса Document
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ РєР»Р°СЃСЃР° Document
 Document::Document() {
-	date = "1 января 1970";
-	organisation = "Feel Good Inc.";
-	add();
-	cout << "Создан объект класса Document номер " << ++document_count << " через конструктор по умолчанию.\n";
+  date = "1 СЏРЅРІР°СЂСЏ 1970";
+  organisation = "Feel Good Inc.";
+  add();
+  cout << "РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Document РЅРѕРјРµСЂ " << ++document_count << " С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.\n";
 }
 
-// конструктор с параметрами для класса Document
-Document::Document(string date, string organisation) :
-	date(date), organisation(organisation) {
-	add();
-	cout << "Создан объект класса Document номер " << ++document_count << " через конструктор с параметрами.\n";
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РґР»СЏ РєР»Р°СЃСЃР° Document
+Document::Document(string date, string organisation):
+date(date), organisation(organisation) {
+  add();
+  cout << "РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Document РЅРѕРјРµСЂ " << ++document_count << " С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё.\n";
 }
 
-// деструктор для класса Document
+// РґРµСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° Document
 Document::~Document() {
-	del();
-	cout << "Уничтожен объект класса Document номер " << document_count-- << ".\n";
+  del();
+  cout << "РЈРЅРёС‡С‚РѕР¶РµРЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Document РЅРѕРјРµСЂ " << document_count-- << ".\n";
 }
 
-// добавление нового элемента в список (при конструкторе или явном вызове)
+// РґРѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ СЃРїРёСЃРѕРє (РїСЂРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРµ РёР»Рё СЏРІРЅРѕРј РІС‹Р·РѕРІРµ)
 void
 Document::add() {
-	Document** temp = documents;
-	documents = new Document * [index + 1];
-	for (int i = 0; i < index; i++) documents[i] = temp[i];
-	documents[index] = this;
-	index++;
+  Document **temp = documents;
+  documents = new Document* [index + 1];
+  for (int i = 0; i < index; i++) documents[i] = temp[i];
+  documents[index] = this;
+  index++;
 }
 
-// удаление последнего элемента из списка (при деструкторе)
+// СѓРґР°Р»РµРЅРёРµ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р° РёР· СЃРїРёСЃРєР° (РїСЂРё РґРµСЃС‚СЂСѓРєС‚РѕСЂРµ)
 void
 Document::del() {
-	Document** temp = documents;
-	documents = new Document * [index];
-	for (int i = 0; i < index - 1; i++) documents[i] = temp[i];
-	index--;
+  Document **temp = documents;
+  documents = new Document* [index];
+  for (int i = 0; i < index - 1; i++) documents[i] = temp[i];
+  index--;
 }
 
-// показ списка элементов документов
+// РїРѕРєР°Р· СЃРїРёСЃРєР° СЌР»РµРјРµРЅС‚РѕРІ РґРѕРєСѓРјРµРЅС‚РѕРІ
 void
 Document::show_list() {
-	cout << "\nСписок всех документов:\n";
-	for (int i = 0; i < index; i++) documents[i]->show_item();
+  cout << "\nРЎРїРёСЃРѕРє РІСЃРµС… РґРѕРєСѓРјРµРЅС‚РѕРІ:\n";
+  for (int i = 0; i < index; i++) documents[i]->show_item();
 }
 
-// конструктор по умолчанию для класса Receipt
-Receipt::Receipt() :
-	Document("1 января 1970 г.", "Feel Good Inc.") {
-	sender = "Иванов И.И.";
-	receiver = "Сидоров С.С.";
-	cost = 150;
-	cout << "Создан объект класса Receipt номер " << ++receipt_count << " через конструктор по умолчанию.\n";
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ РєР»Р°СЃСЃР° Receipt
+Receipt::Receipt(): 
+Document("1 СЏРЅРІР°СЂСЏ 1970 Рі.", "Feel Good Inc.") {
+  sender = "РРІР°РЅРѕРІ Р.Р.";
+  receiver = "РЎРёРґРѕСЂРѕРІ РЎ.РЎ.";
+  cost = 150;
+  cout << "РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Receipt РЅРѕРјРµСЂ " << ++receipt_count << " С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.\n";
 }
 
-// конструктор с параметрами для класса Receipt
-Receipt::Receipt(string date, string organisation, string sender, string receiver, int cost) :
-	Document(date, organisation), sender(sender), receiver(receiver), cost(cost) {
-	cout << "Создан объект класса Receipt номер " << ++receipt_count << " через конструктор с параметрами.\n";
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РґР»СЏ РєР»Р°СЃСЃР° Receipt
+Receipt::Receipt(string date, string organisation, string sender, string receiver, int cost):
+Document(date, organisation), sender(sender), receiver(receiver), cost(cost) {
+  cout << "РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Receipt РЅРѕРјРµСЂ " << ++receipt_count << " С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё.\n";
 }
 
-// деструктор для класса Receipt
+// РґРµСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° Receipt
 Receipt::~Receipt() {
-	cout << "Уничтожен объект класса Receipt номер " << receipt_count-- << ".\n";
+  cout << "РЈРЅРёС‡С‚РѕР¶РµРЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Receipt РЅРѕРјРµСЂ " << receipt_count-- << ".\n";
 }
 
-// вывод информации для объекта класса Receipt
+// РІС‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР° Receipt
 void
 Receipt::show_item() {
-	cout << "Квитанция:" << endl;
-	cout << "Дата: " << this->date << endl;
-	cout << "Организация: " << this->organisation << endl;
-	cout << "Отправитель: " << this->sender << endl;
-	cout << "Получитель: " << this->receiver << endl;
-	cout << "Стоимость: " << this->cost << endl << endl;
+  cout << "РљРІРёС‚Р°РЅС†РёСЏ:" << endl;
+  cout << "Р”Р°С‚Р°: " << this->date << endl;
+  cout << "РћСЂРіР°РЅРёР·Р°С†РёСЏ: " << this->organisation << endl;
+  cout << "РћС‚РїСЂР°РІРёС‚РµР»СЊ: " << this->sender << endl;
+  cout << "РџРѕР»СѓС‡РёС‚РµР»СЊ: " << this->receiver << endl;
+  cout << "РЎС‚РѕРёРјРѕСЃС‚СЊ: " << this->cost << endl << endl;
 }
 
-// конструктор по умолчанию для класса Invoice
-Invoice::Invoice() :
-	Document("1 января 1970 г.", "Feel Good Inc.") {
-	goods = "Мясо, картошка, киви, репчатый лук, оливье";
-	provider = "Маменко И.В.";
-	date_of_delivery = "8 сентября 2008 г.";
-	cout << "Создан объект класса Invoice номер " << ++invoice_count << " через конструктор по умолчанию.\n";
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ РєР»Р°СЃСЃР° Invoice
+Invoice::Invoice():
+Document("1 СЏРЅРІР°СЂСЏ 1970 Рі.", "Feel Good Inc.") {
+  goods = "РњСЏСЃРѕ, РєР°СЂС‚РѕС€РєР°, РєРёРІРё, СЂРµРїС‡Р°С‚С‹Р№ Р»СѓРє, РѕР»РёРІСЊРµ";
+  provider = "РњР°РјРµРЅРєРѕ Р.Р’.";
+  date_of_delivery = "8 СЃРµРЅС‚СЏР±СЂСЏ 2008 Рі.";
+  cout << "РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Invoice РЅРѕРјРµСЂ " << ++invoice_count << " С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.\n";
 }
 
-// конструктор с параметрами для класса Invoice
-Invoice::Invoice(string date, string organisation, string goods, string provider, string date_of_delivery) :
-	Document(date, organisation), goods(goods), provider(provider), date_of_delivery(date_of_delivery) {
-	cout << "Создан объект клааса Invoice номер " << ++invoice_count << " через конструктор с параметрами.\n";
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РґР»СЏ РєР»Р°СЃСЃР° Invoice
+Invoice::Invoice(string date, string organisation, string goods, string provider, string date_of_delivery):
+Document(date, organisation), goods(goods), provider(provider), date_of_delivery(date_of_delivery) {
+  cout << "РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєР»Р°Р°СЃР° Invoice РЅРѕРјРµСЂ " << ++invoice_count << " С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё.\n";
 }
 
-// деструктор для класса Invoice
+// РґРµСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° Invoice
 Invoice::~Invoice() {
-	cout << "Уничтожен объект класса Invoice номер " << invoice_count-- << ".\n";
+  cout << "РЈРЅРёС‡С‚РѕР¶РµРЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Invoice РЅРѕРјРµСЂ " << invoice_count-- << ".\n";
 }
 
-// вывод информации для объекта класса Invoice
+// РІС‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР° Invoice
 void
 Invoice::show_item() {
-	cout << "Накладная:" << endl;
-	cout << "Дата: " << this->date << endl;
-	cout << "Огранизация: " << this->organisation << endl;
-	cout << "Товары: " << this->goods << endl;
-	cout << "Поставщик: " << this->provider << endl;
-	cout << "Дата поставки: " << this->date_of_delivery << endl << endl;
+  cout << "РќР°РєР»Р°РґРЅР°СЏ:" << endl;
+  cout << "Р”Р°С‚Р°: " << this->date << endl;
+  cout << "РћРіСЂР°РЅРёР·Р°С†РёСЏ: " << this->organisation << endl;
+  cout << "РўРѕРІР°СЂС‹: " << this->goods << endl;
+  cout << "РџРѕСЃС‚Р°РІС‰РёРє: " << this->provider << endl;
+  cout << "Р”Р°С‚Р° РїРѕСЃС‚Р°РІРєРё: " << this->date_of_delivery << endl << endl;
 }
 
-// конструктор по умолчанию для класса Check
-Check::Check() :
-	Document("1 января 1970 г.", "Feel Good Inc.") {
-	payee = "Максимова О.Г.";
-	drawer = "Дементьева Т.Г.";
-	amount = 288.20;
-	cout << "Создан объект класса Check номер " << ++check_count << " через конструктор по умолчанию.\n";
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ РєР»Р°СЃСЃР° Check
+Check::Check():
+Document("1 СЏРЅРІР°СЂСЏ 1970 Рі.", "Feel Good Inc.") {
+  payee = "РњР°РєСЃРёРјРѕРІР° Рћ.Р“.";
+  drawer = "Р”РµРјРµРЅС‚СЊРµРІР° Рў.Р“.";
+  amount = 288.20;
+  cout << "РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Check РЅРѕРјРµСЂ " << ++check_count << " С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.\n";
 }
 
-// конструктор с параметрами для класса Check
-Check::Check(string date, string organisation, string payee, string drawer, double amount) :
-	Document(date, organisation), payee(payee), drawer(drawer), amount(amount) {
-	cout << "Создан объект класса Check номер " << ++check_count << " через конструктор с параметрами.\n";
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РґР»СЏ РєР»Р°СЃСЃР° Check
+Check::Check(string date, string organisation, string payee, string drawer, double amount):
+Document(date, organisation), payee(payee), drawer(drawer), amount(amount) {
+  cout << "РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Check РЅРѕРјРµСЂ " << ++check_count << " С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё.\n";
 }
 
-// деструктор для класса Check
+// РґРµСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° Check
 Check::~Check() {
-	cout << "Унчитожен объект класса Check номер " << check_count-- << ".\n";
+  cout << "РЈРЅС‡РёС‚РѕР¶РµРЅ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Check РЅРѕРјРµСЂ " << check_count-- << ".\n";
 }
 
-// вывод информации для объекта класса Check
+// РІС‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР° Check
 void
 Check::show_item() {
-	cout << "Чек:" << endl;
-	cout << "Дата: " << this->date << endl;
-	cout << "Огранизация: " << this->organisation << endl;
-	cout << "Чекодержтель: " << this->payee << endl;
-	cout << "Чекодатель: " << this->drawer << endl;
-	cout << "Сумма (в бел. руб.): " << this->amount << endl << endl;
+  cout << "Р§РµРє:" << endl;
+  cout << "Р”Р°С‚Р°: " << this->date << endl;
+  cout << "РћРіСЂР°РЅРёР·Р°С†РёСЏ: " << this->organisation << endl;
+  cout << "Р§РµРєРѕРґРµСЂР¶С‚РµР»СЊ: " << this->payee << endl;
+  cout << "Р§РµРєРѕРґР°С‚РµР»СЊ: " << this->drawer << endl;
+  cout << "РЎСѓРјРјР° (РІ Р±РµР». СЂСѓР±.): " << this->amount << endl << endl;
 }
