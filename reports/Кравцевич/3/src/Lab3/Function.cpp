@@ -22,7 +22,6 @@ string Function::toString()
 	return this->name + "(" + to_string(this->x) + ") = " + to_string(this->value);
 }
 
-
 bool Function::operator == (Function rightFunction)
 {
 	return this->value == rightFunction.value;
