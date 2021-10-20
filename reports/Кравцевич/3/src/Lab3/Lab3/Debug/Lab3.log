@@ -1,0 +1,5 @@
+﻿  FuncCollection.cpp
+D:\Projects\Лабораторные\ЯП\Prog_lang\reports\Кравцевич\3\src\Lab3\Lab3\FuncCollection.cpp(15,12): warning C4018: >: несоответствие типов со знаком и без знака
+D:\Projects\Лабораторные\ЯП\Prog_lang\reports\Кравцевич\3\src\Lab3\Lab3\FuncCollection.cpp(25,12): warning C4018: >: несоответствие типов со знаком и без знака
+D:\Projects\Лабораторные\ЯП\Prog_lang\reports\Кравцевич\3\src\Lab3\Lab3\FuncCollection.cpp(35,23): warning C4018: <: несоответствие типов со знаком и без знака
+  Lab3.vcxproj -> D:\Projects\Лабораторные\ЯП\Prog_lang\reports\Кравцевич\3\src\Lab3\Debug\Lab3.exe
