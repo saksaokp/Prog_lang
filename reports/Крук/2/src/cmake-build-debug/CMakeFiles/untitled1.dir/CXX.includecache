@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/NeRpi/CLionProjects/untitled1/metropolis.cpp
+metropolis.h
+C:/Users/NeRpi/CLionProjects/untitled1/metropolis.h
+
+C:/Users/NeRpi/CLionProjects/untitled1/metropolis.h
+town.h
+C:/Users/NeRpi/CLionProjects/untitled1/town.h
+
+C:/Users/NeRpi/CLionProjects/untitled1/place.h
+iostream
+-
+
+C:/Users/NeRpi/CLionProjects/untitled1/town.h
+place.h
+C:/Users/NeRpi/CLionProjects/untitled1/place.h
+
