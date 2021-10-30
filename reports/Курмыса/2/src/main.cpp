@@ -9,6 +9,7 @@ int Check::check_count = 0;
 Document** Document::documents = nullptr;
 
 int main() {
+  std::system("chcp 1251"); // для того чтобы компилятор не сходил с ума
   // неявное добавление объектов в список (через конструктор)
   Receipt doc1;
   Receipt doc2("1 ноября 2001 г.", "Vitruvium", "Гордеев А.Г.", "Филатова В.А.", 846);
