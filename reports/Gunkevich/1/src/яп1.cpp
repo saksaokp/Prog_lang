@@ -8,7 +8,8 @@ int main()
     resorces* S[3];
     S[0] = new resorces("Иван", 5, 1);
     S[1] = new resorces();
-    S[2] = new resorces("Виталий", 1, 1);
+    resorces a("Виталий", 1, 1);
+    S[2] = new resorces(a);
 
     S[1]->set("Дмитрий", 3, 0);
 
