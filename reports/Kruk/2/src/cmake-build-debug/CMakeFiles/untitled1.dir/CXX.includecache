@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Projects/lab/Prog_lang/reports/Kruk/2/src/metropolis.cpp
+metropolis.h
+D:/Projects/lab/Prog_lang/reports/Kruk/2/src/metropolis.h
+
+D:/Projects/lab/Prog_lang/reports/Kruk/2/src/metropolis.h
+town.h
+D:/Projects/lab/Prog_lang/reports/Kruk/2/src/town.h
+
+D:/Projects/lab/Prog_lang/reports/Kruk/2/src/place.h
+iostream
+-
+
+D:/Projects/lab/Prog_lang/reports/Kruk/2/src/town.h
+place.h
+D:/Projects/lab/Prog_lang/reports/Kruk/2/src/place.h
+
