@@ -73,7 +73,7 @@ def menu(header, students) -> None:
             filename = 'files/students.csv'
             save(filename, header, students)
         elif inp == '4':
-            header, students = load(input('Введите название файла для загрузки: files/'))
+            header, students = load('files/' + input('Введите название файла для загрузки: files/'))
         elif inp == '0':
             return
 
