@@ -1,10 +1,9 @@
 create table manufacturers
 (
     id      serial primary key,
-    country char(30)
+    name    char(30),
+    country char(3)
 );
-
-
 
 create table products
 (
@@ -18,15 +17,50 @@ create table catalog
     id        serial primary key,
     product   int references products (id),
     is_18plus bool,
-    price     int,
+    price     decimal(8, 2),
     count     int
 );
 
-create table operations
-(
-    id        serial primary key,
-    product   int references catalog (id),
-    count     int,
-    timestamp timestamp default now()
-);
+
+insert into manufacturers(name, country)
+values ('Lay''s', 'RUS'),
+       ('MegaChips', 'BYN'),
+       ('Pringles', 'POL'),
+       ('Русская картошка', 'RUS'),
+       ('PivandopavaPodval', 'BYN');
+
+insert into products(name, manufacturer)
+values ('сметана и зелень', 1),
+       ('лук', 1),
+       ('STIX сыр чеддер', 1),
+       ('сметана и зелень', 2),
+       ('грибы', 2),
+       ('креветки', 2),
+       ('сметана и зелень', 3),
+       ('паприка', 3),
+       ('сметана и зелень', 4),
+       ('сыр', 4),
+       ('IDEAL', 5);
+
+select manufacturers.country, manufacturers.name, products.name from manufacturers
+join products on manufacturers.id = products.manufacturer;
+
+insert into catalog (product, is_18plus, price, count)
+values (1, false, 3.00, 30),
+       (1, false, 2.00, 5),
+       (2, false, 2.50, 14),
+       (3, false, 3.50, 3),
+       (4, false, 2.00, 24),
+       (5, false, 1.00, 43),
+       (7, false, 4.67, 20),
+       (8, false, 5.03, 23),
+       (11, true, 1.76, 40);
+
+update manufacturers
+set name = 'Лидское'
+where name = 'PivandopavaPodval';
+
+select m.country, m.name as manufacturer, p.name, c.is_18plus, c.price, c.count from manufacturers m
+join products p on m.id = p.manufacturer
+join catalog c on p.id = c.product;
 
