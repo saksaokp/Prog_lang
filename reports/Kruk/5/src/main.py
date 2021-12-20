@@ -4,14 +4,11 @@ import os
 l = []
 s = str()
 
-
 def files() -> None:
     count = 0
     for root, dirs, fiels in os.walk("venv"):
         count += len(fiels)
-        for name in fiels:
-            print(name)
-    print("\nКолличество файлов в папке: " + str(count))
+    print("\nКолличество файлов в папке:", count)
 
 
 def open_lines() -> list:
