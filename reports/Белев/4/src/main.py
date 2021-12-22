@@ -3,7 +3,7 @@ from random import randrange as rand
 
 
 def formula(a, b, c, k):
-    return mod((a**2/b**2+c**2*a**2)/(a+b+c*(k-a/b**3))+c+(k/b-k/a)*c)
+    return mod((a ** 2 / b ** 2 + c ** 2 * a ** 2) / (a + b + c * (k - a / b ** 3)) + c + (k / b - k / a) * c)
 
 
 def T1():
@@ -26,7 +26,7 @@ def T3():
     lst = []
     sum = 0
     for i in range(10):
-        lst[i] = rand(0, 15, 1)
+        lst.append(rand(0, 15, 1))
     for i in range(len(lst)):
         if lst[i] / 10 >= 1:
             sum = sum + lst[i]
@@ -37,7 +37,7 @@ def T4():
     lst = []
     max = 0
     for i in range(10):
-        lst[i] = rand(0, 15, 1)
+        lst.append(rand(0, 15, 1))
     for i in range(len(lst)):
         if lst[i] > max:
             max = lst[i]
@@ -57,7 +57,7 @@ def T6():
     lst = []
     max = 0
     for i in range(10):
-        lst[i] = str(rand(10000, 9999999999, 1))
+        lst.append(str(rand(10000, 9999999999, 1)))
     for i in range(len(lst)):
         print(lst[i])
 
@@ -79,15 +79,15 @@ def T8():
 
 
 matr = [
-        [1, 2, 3, 4, 5, 6, 7, 8],
-        [8, 7, 6, 5, 4, 3, 2, 1],
-        [2, 3, 4, 5, 6, 7, 8, 9],
-        [9, 8, 7, 6, 5, 4, 3, 2],
-        [1, 3, 5, 7, 9, 7, 5, 3],
-        [3, 1, 5, 3, 2, 6, 5, 7],
-        [1, 7, 5, 9, 7, 3, 1, 5],
-        [2, 6, 3, 5, 1, 7, 3, 2]
-    ]
+    [1, 2, 3, 4, 5, 6, 7, 8],
+    [8, 7, 6, 5, 4, 3, 2, 1],
+    [2, 3, 4, 5, 6, 7, 8, 9],
+    [9, 8, 7, 6, 5, 4, 3, 2],
+    [1, 3, 5, 7, 9, 7, 5, 3],
+    [3, 1, 5, 3, 2, 6, 5, 7],
+    [1, 7, 5, 9, 7, 3, 1, 5],
+    [2, 6, 3, 5, 1, 7, 3, 2]
+]
 
 
 def T9():
@@ -98,7 +98,6 @@ def T9():
         for k in range(8):
             print(matr[i][k], end="\t")
         print()
-
 
 
 def T10():
@@ -124,11 +123,11 @@ def T12():
     print(matr)
 
 
-def T13 ():
+def T13():
     matrtemp = matr
     delete = int(input())
     matrtemp.pop(delete)
-    print(matr)
+    print(matrtemp)
 
 
 def T14():
@@ -147,12 +146,13 @@ def T15():
     bl = "nobreak"
     i = 0
     words = string.split()
-    while i != len(words)-1:
+    while i != len(words) - 1:
         for i in range(len(words)):
             bl = "nobreak"
             for k in range(len(words[i])):
-                if words[i][k] == "!" or words[i][k] == "?" or words[i][k] == "." or words[i][k] == "," or words[i][k] == ":" or words[i][k] == ";":
-                    words[i] = words[i][:k] + words[i][k+1:]
+                if words[i][k] == "!" or words[i][k] == "?" or words[i][k] == "." or words[i][k] == "," or words[i][
+                    k] == ":" or words[i][k] == ";":
+                    words[i] = words[i][:k] + words[i][k + 1:]
                     i -= 1
                     bl = "break"
                     break
@@ -162,6 +162,7 @@ def T15():
         if len(words[i]) >= 5:
             stringres += words[i]
             stringres += " "
+    print(string)
     print(stringres)
 
 
@@ -200,6 +201,7 @@ def T18():
         if symbol != " ":
             symbolcount += 1
     wordscount = len(words)
+    print(string)
     print("Слов:", wordscount)
     print("Символов", symbolcount)
 
@@ -241,7 +243,8 @@ def T20():
 
 
 def T21():
-    string = [['БО-331101',['Акулова Алёна','Бабушкина Ксения']],['БОВ-421102',['Максимина Таня','Хорохоров Даниил']]]
+    string = [['БО-331101', ['Акулова Алёна', 'Бабушкина Ксения']],
+              ['БОВ-421102', ['Максимина Таня', 'Хорохоров Даниил']]]
     for Group in string:
         print(Group[0])
         for Student in Group[1]:
@@ -249,7 +252,8 @@ def T21():
 
 
 def T22():
-    string = [['БО-331101',['Акулова Алёна','Бабушкина Ксения']],['БОВ-421102',['Максимина Таня','Хорохоров Даниил']]]
+    string = [['БО-331101', ['Акулова Алёна', 'Бабушкина Ксения']],
+              ['БОВ-421102', ['Максимина Таня', 'Хорохоров Даниил']]]
     for Group in string:
         for Student in Group[1]:
             if Student[0] == 'А':
@@ -267,30 +271,30 @@ while True:
     if Task == 0:
         break
     Tasks = {
-            1: T1,
-            2: T2,
-            3: T3,
-            4: T4,
-            5: T5,
-            6: T6,
-            7: T7,
-            8: T8,
-            9: T9,
-            10: T10,
-            11: T11,
-            12: T12,
-            13: T13,
-            14: T14,
-            15: T15,
-            16: T16,
-            17: T17,
-            18: T18,
-            19: T19,
-            20: T20,
-            21: T21,
-            22: T22
-        }
-    print(Tasks[Task]())
+        1: T1,
+        2: T2,
+        3: T3,
+        4: T4,
+        5: T5,
+        6: T6,
+        7: T7,
+        8: T8,
+        9: T9,
+        10: T10,
+        11: T11,
+        12: T12,
+        13: T13,
+        14: T14,
+        15: T15,
+        16: T16,
+        17: T17,
+        18: T18,
+        19: T19,
+        20: T20,
+        21: T21,
+        22: T22
+    }
+    Tasks[Task]()
     print("Желаете продолжить?")
     Agried = input()
     if (Agried != '1') and (Agried != 'Yes') and (Agried != 'Y') and (Agried != 'Да'):
