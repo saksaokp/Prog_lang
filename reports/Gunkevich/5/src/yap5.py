@@ -47,8 +47,9 @@ def read():
     return arr
 
 
-def writer5(arr):
-    f = open("students2.csv", "w", newline="")
+def writer5(arr, file_name):
+    name = file_name + ".csv"
+    f = open(name, "w", newline="")
     writer = csv.writer(f)
     for i in arr:
         line = [';'.join(i)]
@@ -56,16 +57,16 @@ def writer5(arr):
     f.close()
 
 
-def read5():
-    f = open("students2.csv", "r")
+def read5(file_name):
+    name = file_name + ".csv"
+    f = open(name, "r")
     reader = csv.reader(f)
     arr = []
     for i in reader:
         arr.append(str(i)[2:len(i) - 3].split(';'))
     f.close()
-    print("Исходные данные: ", arr)
-    output(arr)
     return arr
+
 
 def sort_num(i):
     return i[3]
@@ -84,8 +85,30 @@ def task_3():
 
 
 def task_5():
-    students = read()
-    writer5(students)
+    file_name = input("Введите название файла:")
+    count = int(input("Введите кол-во студентов:"))
+    zero = []
+    writer5(zero, file_name)
+    for i in range(count):
+        number = input("Введите номер:")
+        name = input('Введите имя:')
+        age = input("Введите возраст:")
+        num_group = input("Введите номер группы: ")
+        arr = [number, name, age, num_group]
+        students = read5(file_name)
+        students.append(arr)
+        writer5(students, file_name)
+    students = read5(file_name)
+    print("Новый список:\n ", students)
+    output(students)
+    writer5(students, file_name)
+    students.clear
+
+
+def task_4():
+    file_name = input("Введите название файла:")
+    arr = read5(file_name)
+    output(arr)
 
 
 def main():
@@ -105,7 +128,7 @@ def main():
         elif a == 5:
             task_5()
         elif a == 4:
-            read5()
+            task_4()
         elif a == 0: break
         else: print("НЕПРАВИЛЬНЫЙ ВВОД!")
 
