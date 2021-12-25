@@ -67,13 +67,14 @@ def menu(header, students) -> None:
         if inp == '1':
             decrease(students)
         elif inp == '2':
-            filename = 'files/' + input('Введите название файла для сохранения: ')
+            filename = 'files/' + input('Введите название файла для сохранения (need .csv):  files/')
             save(filename, header, students)
         elif inp == '3':
             filename = 'files/students.csv'
             save(filename, header, students)
         elif inp == '4':
-            header, students = load('files/' + input('Введите название файла для загрузки: files/'))
+            filename = 'files/' + input('Введите название файла для загрузки (need .csv): files/')
+            header, students = load(filename)
         elif inp == '0':
             return
 
