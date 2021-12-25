@@ -42,9 +42,6 @@ values ('сметана и зелень', 1),
        ('сыр', 4),
        ('IDEAL', 5);
 
-select manufacturers.country, manufacturers.name, products.name from manufacturers
-join products on manufacturers.id = products.manufacturer;
-
 insert into catalog (product, is_18plus, price, count)
 values (1, false, 3.00, 30),
        (1, false, 2.00, 5),
@@ -55,12 +52,3 @@ values (1, false, 3.00, 30),
        (7, false, 4.67, 20),
        (8, false, 5.03, 23),
        (11, true, 1.76, 40);
-
-update manufacturers
-set name = 'Лидское'
-where name = 'PivandopavaPodval';
-
-select m.country, m.name as manufacturer, p.name, c.is_18plus, c.price, c.count from manufacturers m
-join products p on m.id = p.manufacturer
-join catalog c on p.id = c.product;
-
