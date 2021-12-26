@@ -43,6 +43,15 @@ class Person:
     def sex(self, sex) -> None:
         self._sex = sex
 
+    def in_name(self):
+        self._name = input('Enter name: ')
+
+    def in_age(self):
+        self._age = input('Enter age: ')
+
+    def in_sex(self):
+        self._sex = input('Enter sex: ')
+
 
 class Sportsman(Person):
     _sport: str
@@ -64,6 +73,9 @@ class Sportsman(Person):
     @sport.setter
     def sport(self, sport) -> None:
         self._sport = sport
+
+    def in_sport(self):
+        self._sport = input('Enter sport: ')
 
 
 class Prizewinner(Sportsman):
@@ -87,6 +99,9 @@ class Prizewinner(Sportsman):
     def place(self, place) -> None:
         self._place = place
 
+    def in_place(self):
+        self._place = input('Enter place: ')
+
 
 def main():
     print('Создание экземпляров класса:')
@@ -101,6 +116,9 @@ def main():
 
     print('\nИзменённые экземпляры класса:', *people, sep='\n')
     print('')
+
+    prizewinner.in_name()
+    print(prizewinner)
 
 
 if __name__ == '__main__':

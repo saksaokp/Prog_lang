@@ -44,8 +44,19 @@ class Bank:
     def workers(self, workers: int) -> None:
         self.__workers = workers
 
+    def in_name(self):
+        self.__name = input('name: ')
+    def in_money(self):
+        self.__money = input('money: ')
+    def in_workers(self):
+        self.__workers = input('workers: ')
+
+
 defaultBank=Bank()
 specialBank=Bank('Банк Golden Coast NY', 300000, 21)
 
 print(defaultBank)
+print(specialBank)
+
+specialBank.in_name()
 print(specialBank)
