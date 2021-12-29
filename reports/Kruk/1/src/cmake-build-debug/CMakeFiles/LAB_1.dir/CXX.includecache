@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Projects/lab/Prog_lang/reports/Kruk/1/src/class.h
+iostream
+-
+Windows.h
+-
+
+D:/Projects/lab/Prog_lang/reports/Kruk/1/src/demonstration.cpp
+class.h
+D:/Projects/lab/Prog_lang/reports/Kruk/1/src/class.h
+
+D:/Projects/lab/Prog_lang/reports/Kruk/1/src/realization.cpp
+class.h
+D:/Projects/lab/Prog_lang/reports/Kruk/1/src/class.h
+
